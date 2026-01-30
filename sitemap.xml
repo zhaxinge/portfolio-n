@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>index.html</loc><priority>1.0</priority></url>
+  <url><loc>aboutme.html</loc><priority>0.8</priority></url>
+  <url><loc>RESUME.html</loc><priority>0.8</priority></url>
+  <url><loc>ART.html</loc><priority>0.7</priority></url>
+  <url><loc>BIKEPRE.html</loc><priority>0.7</priority></url>
+  <url><loc>BIKERISK.html</loc><priority>0.7</priority></url>
+  <url><loc>FLOOD.html</loc><priority>0.7</priority></url>
+  <url><loc>FRUITOTO.html</loc><priority>0.7</priority></url>
+  <url><loc>GUIYU.html</loc><priority>0.7</priority></url>
+  <url><loc>HOUSE.html</loc><priority>0.7</priority></url>
+  <url><loc>PARKING.html</loc><priority>0.7</priority></url>
+  <url><loc>PRICE.html</loc><priority>0.7</priority></url>
+  <url><loc>SCOOTER.html</loc><priority>0.7</priority></url>
+  <url><loc>TOD.html</loc><priority>0.7</priority></url>
+  <url><loc>precision-forecast.html</loc><priority>0.7</priority></url>
+  <url><loc>swphilly.html</loc><priority>0.7</priority></url>
+  <url><loc>otherwork.html</loc><priority>0.6</priority></url>
+</urlset>
