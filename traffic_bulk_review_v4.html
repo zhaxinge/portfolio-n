@@ -729,10 +729,13 @@ const MOV_ALIASES = {
 };
 // Plan → which day type AM/PM baseline
 // dayType → { am: planName, pm: planName }
+// Saturday/Sunday AM peak → WE_AM (8:30-10:00 / 9:30-10:30)
+// Saturday PM peak → SAT_PK (10:00-19:00) — the mid/afternoon plan, like MD for weekdays
+// Sunday PM peak  → SUN_PK (10:30-18:00) — same reasoning
 const PLAN_FOR_PEAK = {
   weekday:  { am:'AM',    pm:'PM'    },
-  saturday: { am:'WE_AM', pm:'WE_PM' },
-  sunday:   { am:'WE_AM', pm:'WE_PM' },
+  saturday: { am:'WE_AM', pm:'SAT_PK' },
+  sunday:   { am:'WE_AM', pm:'SUN_PK' },
 };
 
 async function parseSynchroFiles(files){
