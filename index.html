@@ -22,6 +22,10 @@
   @keyframes livedot { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
   @keyframes reelin { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
   a { color: inherit; }
+  @media (max-width: 899px) {
+    .sc-host article[data-project-card] { -webkit-tap-highlight-color: transparent; }
+    .sc-host main { min-width: 0 !important; }
+  }
 </style>
 </helmet>
 
@@ -103,7 +107,7 @@
         <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a); border-bottom: 2px solid var(--border, rgba(210,215,217,0.75)); padding-bottom: 0.7em; margin-bottom: 1.8em;">{{ s.name }}</div>
         <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5em 3em;">
           <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3">
-            <article onClick="{{ c.onClick }}" style="cursor: pointer; display: flex; flex-direction: column;">
+            <article data-project-card onClick="{{ c.onClick }}" onKeyDown="{{ c.onKeyDown }}" role="button" tabIndex="0" style="cursor: pointer; display: flex; flex-direction: column;">
               <div style="{{ c.thumbStyle }}">
                 <sc-if value="{{ c.isPipeline }}" hint-placeholder-val="{{ false }}">
                   <div style="position: absolute; left: 13%; right: 13%; top: 50%; height: 1px; background: var(--border, rgba(210,215,217,0.75));"></div>
@@ -375,7 +379,10 @@
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { view: 'home', pid: 'traffic', dir: 'tour', step: 0, playing: true, openTech: 0, query: '', sidebarOpen: true };
+    this.state = {
+      view: 'home', pid: 'traffic', dir: 'tour', step: 0, playing: true, openTech: 0, query: '',
+      sidebarOpen: typeof window !== 'undefined' ? window.matchMedia('(min-width: 900px)').matches : true
+    };
 
     this.PROFILE = {
       role: 'Data analyst · spatial & agentic BI',
@@ -665,6 +672,7 @@ class Component extends DCLogic {
       return {
         title: p.name, tagline: p.tagline, eyebrow: p.eyebrow,
         onClick: () => this.openProject(p.id),
+        onKeyDown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.openProject(p.id); } },
         isPipeline: isPipe,
         thumbStyle,
         miniNodes: isPipe ? p.stages.map((_, i) => ({ n: i + 1 })) : []

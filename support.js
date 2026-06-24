@@ -152,11 +152,16 @@
     const rootName = rootNameForDocument(doc, location);
     runtime.markFetched(rootName);
     runtime.adoptParsed(rootName, parsed);
-    fetch(location.href).then((res) => res.ok ? res.text() : "").then((t) => {
-      const raw = t ? parseDcText(t) : null;
-      if (raw?.template) runtime.updateHtml(rootName, raw.template);
-    }).catch(() => {
-    });
+  // Standalone pages already have the live <x-dc> template from adoptParsed above.
+  // Re-fetching index.html can replace bindings with a Jekyll/Liquid-stripped copy
+  // (missing {{ … }}), which breaks onClick handlers — only stream from the editor.
+    if (window.parent !== window) {
+      fetch(location.href).then((res) => res.ok ? res.text() : "").then((t) => {
+        const raw = t ? parseDcText(t) : null;
+        if (raw?.template) runtime.updateHtml(rootName, raw.template);
+      }).catch(() => {
+      });
+    }
     const dc = doc.querySelector("x-dc");
     const hostEl = doc.createElement("div");
     hostEl.id = "dc-root";
@@ -384,9 +389,13 @@
       }
       if (isComponent) {
         if (key.includes("-")) key = kebabToCamel(key);
+        else if (key === "tabindex") key = "tabIndex";
+        else if (key.startsWith("on"))
+          key = EVENT_MAP[key] || "on" + key[2].toUpperCase() + key.slice(3);
       } else {
         if (key === "class") key = "className";
         else if (key === "for") key = "htmlFor";
+        else if (key === "tabindex") key = "tabIndex";
         else if (key.startsWith("on"))
           key = EVENT_MAP[key] || "on" + key[2].toUpperCase() + key.slice(3);
       }
