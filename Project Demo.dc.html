@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/colors.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/typography.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/styles.css">
+<script src="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg, #ffffff); color: var(--fg, #7f888f); font-family: var(--font-body), 'Open Sans', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  @keyframes livedot { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  @keyframes reelin { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
+</style>
+</helmet>
+
+<div style="--accent: {{ accent }}; min-height: 100vh; background: var(--bg, #ffffff);">
+
+  <!-- Top bar -->
+  <header style="position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 0 3em; height: 64px; background: rgba(255,255,255,0.92); border-bottom: 1px solid var(--border, rgba(210,215,217,0.75));">
+    <div style="font-family: var(--font-heading), serif; font-size: 0.78em; letter-spacing: 0.12em; text-transform: uppercase;">
+      <span style="color: var(--fg-bold, #3d4449); font-weight: 700;">Xinge Zhang</span><span style="color: var(--fg-light, #9fa3a6); font-weight: 400;">&nbsp;|&nbsp;Portfolio</span>
+    </div>
+    <nav style="display: flex; gap: 1.8em; font-family: var(--font-heading), serif; font-size: 0.72em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-light, #9fa3a6);">
+      <span style="color: var(--fg-bold, #3d4449);">Work</span>
+      <span>About</span>
+      <span>Contact</span>
+    </nav>
+  </header>
+
+  <!-- Project switcher -->
+  <div style="border-bottom: 1px solid var(--border, rgba(210,215,217,0.75)); background: var(--bg-alt, #f5f6f7);">
+    <div style="max-width: 920px; margin: 0 auto; padding: 1.3em 2em 0;">
+      <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.7em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-light, #9fa3a6);">Selected works · pick a project</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.6em; margin-top: 0.6em;">
+        <sc-for list="{{ projectTabs }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.name }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content column -->
+  <main style="max-width: 920px; margin: 0 auto; padding: 4em 2em 6em;">
+
+    <!-- Hero -->
+    <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">{{ eyebrow }}</div>
+    <h1 style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 3.2em; line-height: 1.12; margin: 0.35em 0 0.25em; text-wrap: balance;">{{ name }}</h1>
+    <p style="font-family: var(--font-heading), serif; font-weight: 400; color: var(--fg-bold, #3d4449); font-size: 1.32em; line-height: 1.45; margin: 0 0 1.1em; max-width: 40ch;">{{ tagline }}</p>
+
+    <p style="font-size: 1.1em; line-height: 1.7; color: #565d63; margin: 0 0 0.9em; max-width: 64ch;">{{ lead }}</p>
+    <p style="font-size: 1.0em; line-height: 1.65; color: var(--fg, #7f888f); margin: 0 0 1.6em; max-width: 64ch;"><strong style="color: var(--fg-bold, #3d4449); font-weight: 600;">Why it matters.</strong> {{ why }}</p>
+
+    <!-- CTAs -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.7em; margin-bottom: 1.1em;">
+      <sc-if value="{{ hasLive }}" hint-placeholder-val="{{ true }}">
+        <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="{{ liveUrl }}" target="_blank" rel="noopener" variant="primary" icon="fa-solid fa-play" hint-size="auto,3.5em">Open live demo</x-import>
+      </sc-if>
+      <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="{{ repoUrl }}" target="_blank" rel="noopener" variant="{{ repoVariant }}" icon="fa-brands fa-github" hint-size="auto,3.5em">View on GitHub</x-import>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5em; margin-bottom: 3.2em;">
+      <sc-for list="{{ stack }}" as="chip" hint-placeholder-count="5">
+        <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Tag" hint-size="auto,2em">{{ chip }}</x-import>
+      </sc-for>
+    </div>
+
+    <!-- Demo section header + mode switcher -->
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1em; padding-bottom: 1.1em; border-bottom: 2px solid var(--border, rgba(210,215,217,0.75)); margin-bottom: 1.8em;">
+      <div>
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">See it in action</div>
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.5em; margin-top: 0.15em;">{{ modeTitle }}</div>
+        <div style="font-size: 0.95em; color: var(--fg-light, #9fa3a6); margin-top: 0.2em; max-width: 48ch;">{{ modeBlurb }}</div>
+      </div>
+      <div style="display: inline-flex; border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: 0.375em; overflow: hidden; flex: none;">
+        <button onClick="{{ showTour }}" style="{{ tabTour }}">Tour</button>
+        <button onClick="{{ showAnnotated }}" style="{{ tabAnn }}">Annotated</button>
+        <button onClick="{{ showReel }}" style="{{ tabReel }}">Reel</button>
+      </div>
+    </div>
+
+    <!-- ============ DIRECTION A — GUIDED TOUR ============ -->
+    <sc-if value="{{ isTour }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="{{ frameStyle }}">
+        <div style="{{ spotStyle }}"></div>
+        <div style="position: absolute; left: 1em; top: 1em; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.68em; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent, #f56a6a); z-index: 5;">Step {{ stepHuman }} / {{ total }}</div>
+      </div>
+      <div style="height: 3px; background: var(--bg-alt-2, #eff1f2); border-radius: 3px; margin: 0.9em 0 1.4em; overflow: hidden;">
+        <div style="{{ progressStyle }}"></div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 1.4em;">
+        <button onClick="{{ togglePlay }}" aria-label="Play or pause" style="flex: none; width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--accent, #f56a6a); color: #fff; cursor: pointer; font-size: 0.9em; transition: filter 0.2s ease-in-out;" style-hover="filter: brightness(1.05);">
+          <i class="fa-solid {{ playIcon }}"></i>
+        </button>
+        <div style="flex: 1;">
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.2em;">{{ activeTourTitle }}</div>
+          <p style="margin: 0.3em 0 0; color: var(--fg, #7f888f); font-size: 1.0em; line-height: 1.65; max-width: 62ch;">{{ activeTourBody }}</p>
+        </div>
+        <div style="flex: none; display: flex; align-items: center; gap: 0.45em; padding-top: 0.7em;">
+          <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="3">
+            <button onClick="{{ dot.onClick }}" aria-label="Go to step" style="{{ dot.style }}"></button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ DIRECTION B — ANNOTATED ============ -->
+    <sc-if value="{{ isAnnotated }}" hint-placeholder-val="{{ true }}">
+    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.2em; align-items: start;">
+      <div style="{{ frameStyle }}">
+        <sc-for list="{{ annos }}" as="a" hint-placeholder-count="4">
+          <div style="{{ a.pinStyle }}">{{ a.n }}</div>
+        </sc-for>
+      </div>
+      <div>
+        <sc-for list="{{ annos }}" as="a" hint-placeholder-count="4">
+          <div style="display: flex; gap: 0.8em; padding: 0.7em 0; border-top: 1px solid var(--border, rgba(210,215,217,0.75));">
+            <div style="flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; display: flex; align-items: center; justify-content: center;">{{ a.n }}</div>
+            <div>
+              <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.98em;">{{ a.title }}</div>
+              <div style="color: var(--fg, #7f888f); font-size: 0.92em; line-height: 1.55; margin-top: 0.1em;">{{ a.body }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ DIRECTION C — HIGHLIGHT REEL ============ -->
+    <sc-if value="{{ isReel }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="{{ frameStyle }}">
+        <div style="{{ reelSpotStyle }}"></div>
+        <div style="position: absolute; left: 1.2em; top: 1.1em; display: flex; align-items: center; gap: 0.5em; z-index: 6;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #f56a6a); animation: livedot 1.6s ease-in-out infinite;"></span>
+          <span style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-light, #9fa3a6);">Reel · loops automatically</span>
+        </div>
+        <div key="{{ stepHuman }}" style="position: absolute; left: 1.4em; bottom: 1.3em; max-width: 26ch; z-index: 6; animation: reelin 0.5s ease; background: rgba(255,255,255,0.92); padding: 0.7em 0.95em; border-radius: 0.375em;">
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.66em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #f56a6a);">{{ activeReelKicker }}</div>
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.7em; line-height: 1.2; margin-top: 0.1em;">{{ activeReelLine }}</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.45em; justify-content: center; margin-top: 1.2em;">
+        <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="3">
+          <div style="{{ dot.style }}"></div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ TECHNICAL DETAIL ============ -->
+    <div style="margin-top: 4em;">
+      <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">Under the hood</div>
+      <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.5em; margin: 0.15em 0 1.2em;">For the technical reader</div>
+      <sc-for list="{{ tech }}" as="t" hint-placeholder-count="4">
+        <div style="border-top: 1px solid var(--border, rgba(210,215,217,0.75));">
+          <button onClick="{{ t.onClick }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1em; padding: 1em 0; background: transparent; border: none; cursor: pointer; text-align: left; font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.05em;">
+            <span>{{ t.q }}</span>
+            <i class="fa-solid {{ t.icon }}" style="color: var(--accent, #f56a6a); font-size: 0.8em;"></i>
+          </button>
+          <div style="{{ t.bodyStyle }}">
+            <p style="margin: 0 0 1.1em; color: var(--fg, #7f888f); font-size: 1.0em; line-height: 1.7; max-width: 68ch;">{{ t.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top: 1px solid var(--border, rgba(210,215,217,0.75));"></div>
+    </div>
+
+    <!-- footer note -->
+    <p style="margin-top: 3.2em; padding-top: 1.4em; border-top: 1px solid var(--border, rgba(210,215,217,0.75)); font-size: 0.82em; color: var(--fg-light, #9fa3a6); line-height: 1.6; max-width: 64ch;">
+      <i class="fa-solid fa-code-branch" style="color: var(--accent, #f56a6a); margin-right: 0.5em;"></i>
+      Every project on this page is built from the same template — its summary, demo steps, annotations and technical notes all read from one project data object. Point it at another repo and the whole page rebuilds.
+    </p>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1100, &quot;height&quot;: 920}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#f56a6a&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;autoplay&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;}, &quot;autoplaySpeed&quot;: {&quot;editor&quot;: &quot;float&quot;, &quot;default&quot;: 3.6, &quot;min&quot;: 1.5, &quot;max&quot;: 8, &quot;step&quot;: 0.2, &quot;tsType&quot;: &quot;number&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { pi: 0, dir: 'tour', step: 0, playing: true, openTech: 0 };
+
+    this.PROJECTS = [
+      {
+        name: 'Super Finder',
+        eyebrow: 'Machine learning · Spatial analysis',
+        tagline: 'A parking app that predicts where you\u2019ll actually find a spot.',
+        lead: 'Super Finder forecasts how full each street will be before you get there, so you can drive straight to a block where a space is likely \u2014 instead of circling. It works in San Francisco during workday daytime hours, ranking nearby curbs by predicted occupancy and price.',
+        why: 'Cruising for parking quietly burns time, fuel and patience, and adds to congestion and emissions. A live map of \u201copen now\u201d spots is already out of date by the time you arrive \u2014 a good prediction beats it.',
+        repoUrl: 'https://github.com/zhaxinge/Predictive-Parking-Occupancy',
+        liveUrl: 'https://zhaxinge.github.io/Predictive-Parking-Occupancy/',
+        img: 'assets/img/app.png',
+        aspect: '1152 / 576',
+        stack: ['R', 'OLS regression', 'Spatial (sf)', 'SF open data', 'Street-segment model'],
+        screens: [
+          { spot: { x: 12.5, y: 6, w: 20.5, h: 88 }, tourTitle: 'Tell it where you\u2019re headed', tourBody: 'You type a destination and how long you need to park. The map immediately shows how busy the blocks around you are right now \u2014 the wider the coral ring, the harder parking gets.', reelKicker: 'Find a spot in seconds', reelLine: 'Search by destination, see live demand.' },
+          { spot: { x: 39.5, y: 6, w: 20.5, h: 88 }, tourTitle: 'Compare real predictions \u2014 not just distance', tourBody: 'Every nearby spot is ranked by its predicted occupancy and price, so the top of the list is where you\u2019re genuinely most likely to park \u2014 like the block shown at 80% full with its chance of filling up in the next hour.', reelKicker: 'Predicted, not guessed', reelLine: 'An occupancy forecast for every street.' },
+          { spot: { x: 66, y: 6, w: 20.5, h: 88 }, tourTitle: 'Drive straight to an open curb', tourBody: 'Pick a spot and you get turn-by-turn navigation to it, with the curb\u2019s rates and time limits shown before you arrive \u2014 no surprises, no second loop around the block.', reelKicker: 'Straight to the curb', reelLine: 'Turn-by-turn, with rates up front.' }
+        ],
+        annos: [
+          { x: 22, y: 22, title: 'Destination search', body: 'Set where and when you want to park.' },
+          { x: 22, y: 60, title: 'Live demand radius', body: 'Coral rings show how full the surrounding blocks are, with a count of empty spots nearby.' },
+          { x: 49.5, y: 43, title: 'Predicted occupancy', body: 'Each spot carries a forecast \u2014 e.g. 80% full \u2014 plus its chance of filling within the hour.' },
+          { x: 76, y: 38, title: 'Route to the spot', body: 'Turn-by-turn navigation with an ETA to the chosen curb.' },
+          { x: 76, y: 73, title: 'Rates & time limits', body: 'Pricing by time of day and any limits, shown before you park.' }
+        ],
+        tech: [
+          { q: 'The problem', a: 'Cruising for on-street parking creates congestion, air pollution and wasted fuel, and costs individual drivers time and money. Most parking apps rely on real-time database lookups, which are limited by how completely a city\u2019s spaces are tracked \u2014 so they often can\u2019t point you to a genuinely open spot, and the cruising starts again.' },
+          { q: 'The data', a: 'The model was trained on three months of San Francisco street-parking data (April\u2013June 2021), at the level of individual street segments. The target users are individual drivers during workday daytime hours (9am\u20136pm), when commuter and errand demand peaks.' },
+          { q: 'The model', a: 'An OLS regression predicts a reasonable occupancy for each public street-parking segment. OLS was chosen for interpretability and for its relatively good generalizability, giving drivers a safe estimate of which segment to aim for rather than an over-fit guess.' },
+          { q: 'Stack & credits', a: 'Built in R with the sf spatial stack on open San Francisco parking data, as the MUSA 508 final project by Xinge Zhang and Yiping Ying. The repo includes the full HTML write-up and reproducible analysis.' }
+        ]
+      },
+      {
+        name: 'Charlotte House Prices',
+        eyebrow: 'Hedonic model · Spatial analysis',
+        tagline: 'A model that predicts what a Charlotte home should sell for.',
+        lead: 'Using thousands of home sales across Mecklenburg County, this model estimates a fair market price from a property\u2019s features and its neighborhood. The map shows where its predictions land close \u2014 and where they miss.',
+        why: 'Charlotte is one of the fastest-growing metros in the U.S.; the county\u2019s median home price jumped about 15% in a single year. A grounded price estimate helps buyers and sellers read a fast-moving market with more confidence.',
+        repoUrl: 'https://github.com/zhaxinge/Charlotte-Houseprice-Prediction',
+        liveUrl: 'https://zhaxinge.github.io/Charlotte-Houseprice-Prediction/',
+        img: 'assets/img/houseprice.jpg',
+        aspect: '1584 / 1255',
+        stack: ['R', 'OLS / hedonic model', 'US Census', 'k-fold + spatial CV', 'MAPE by neighborhood'],
+        screens: [
+          { spot: { x: 16, y: 4, w: 62, h: 92 }, tourTitle: 'Every dot is a home sale', tourBody: 'Each point is a sold home across Mecklenburg County, colored by how far the model\u2019s prediction was from the real price. Together they map the whole county at once.', reelKicker: 'County-wide', reelLine: 'Thousands of sales, one model.' },
+          { spot: { x: 46, y: 40, w: 30, h: 32 }, tourTitle: 'Where it gets it right', tourBody: 'Blue areas are homes the model priced within a tight range \u2014 the bulk of typical, well-documented neighborhoods where standard features explain the price.', reelKicker: 'Mostly on target', reelLine: 'Blue = close to the real price.' },
+          { spot: { x: 34, y: 58, w: 30, h: 32 }, tourTitle: 'Where it struggles', tourBody: 'Orange clusters are larger misses \u2014 often unusual or higher-end homes whose price isn\u2019t fully captured by standard features. Showing them honestly is part of the analysis.', reelKicker: 'Honest about limits', reelLine: 'Orange = the hard-to-price homes.' }
+        ],
+        annos: [
+          { x: 62, y: 24, title: 'Well-predicted north', body: 'Predictions hold up across established suburban neighborhoods.' },
+          { x: 50, y: 74, title: 'Under-predicted pockets', body: 'Orange homes sold for more than their features alone suggest.' },
+          { x: 87, y: 42, title: 'Residual scale', body: 'Color runs from large under-prediction to over-prediction.' },
+          { x: 26, y: 56, title: 'Sparse rural edges', body: 'Fewer sales make the rural west harder to model accurately.' }
+        ],
+        tech: [
+          { q: 'The goal', a: 'Mecklenburg County, home to Charlotte, is growing fast \u2014 its median home price rose roughly 15% year-over-year to about $420K. The project builds a model that predicts house prices accurately enough to be useful to buyers and sellers in that market.' },
+          { q: 'The data', a: 'Home sales joined with U.S. Census measures and neighborhood amenities, plus local market signals from sources like Zillow and Redfin, analyzed at the census-tract level across the Charlotte metro.' },
+          { q: 'The model', a: 'An OLS (hedonic) regression on selected property and neighborhood features, validated with random k-fold and spatial cross-validation. Performance is reported as Mean Absolute Percentage Error by neighborhood, to show where the model generalizes and where it doesn\u2019t.' },
+          { q: 'Credits', a: 'MUSA 508 midterm project by Xinge Zhang. Full notebooks, maps and cross-validation results are in the repo and the published report.' }
+        ]
+      },
+      {
+        name: 'Scooter Equity',
+        eyebrow: 'Network analysis · Mobility',
+        tagline: 'Where shared scooters earn their keep \u2014 Austin vs. Chicago.',
+        lead: 'This study maps where e-scooter trips actually cluster in two cities, then models which neighborhood traits drive that demand \u2014 so planners and operators can spot the blocks worth investing in.',
+        why: 'Cities are deciding where to allow and fund shared scooters. Knowing which areas have real potential \u2014 and how two cities differ \u2014 turns a guessing game into a planning decision.',
+        repoUrl: 'https://github.com/zhaxinge/xy-scooter',
+        liveUrl: 'https://zhaxinge.github.io/xy-scooter/',
+        img: 'assets/img/scooter.jpg',
+        aspect: '1728 / 1344',
+        stack: ['Python', 'GeoPandas', 'OD network analysis', 'Census tracts', 'Austin + Chicago 2019'],
+        screens: [
+          { spot: { x: 3, y: 12, w: 42, h: 64 }, tourTitle: 'Chicago\u2019s trip web', tourBody: 'Each line is travel between neighborhoods. Chicago\u2019s scooter trips bunch tightly on the dense north side, where short hops between adjacent areas dominate.', reelKicker: 'Chicago', reelLine: 'Trips cluster on the dense north side.' },
+          { spot: { x: 54, y: 22, w: 43, h: 68 }, tourTitle: 'Austin\u2019s trip web', tourBody: 'Austin\u2019s demand centers on downtown and the university, with longer cross-town hops reaching out from the core \u2014 a different shape of city, a different scooter pattern.', reelKicker: 'Austin', reelLine: 'Demand centers on downtown and campus.' },
+          { spot: { x: 3, y: 12, w: 94, h: 78 }, tourTitle: 'Two cities, one method', tourBody: 'The same census-tract model runs on both cities, which makes their very different patterns directly comparable rather than anecdotal.', reelKicker: 'Side by side', reelLine: 'Same model, two mobility cultures.' }
+        ],
+        annos: [
+          { x: 20, y: 32, title: 'Chicago core', body: 'Tightly connected north-side tracts carry most trips.' },
+          { x: 74, y: 60, title: 'Austin core', body: 'Downtown and the campus area dominate demand.' },
+          { x: 34, y: 58, title: 'Long edges', body: 'Lines stretching out are longer cross-town trips.' },
+          { x: 82, y: 40, title: 'Color = volume', body: 'Brighter, heavier lines carry more trips.' }
+        ],
+        tech: [
+          { q: 'The question', a: 'Do people take scooters because of who lives in an area, the mix of available transport, or the time of day? The project compares scooter usage in Austin and Chicago to see what drives demand and how the two cities differ.' },
+          { q: 'The data', a: 'E-scooter trip datasets for Austin and Chicago in 2019, analyzed at the census-tract level alongside community attributes and travel-mode and peak-hour patterns.' },
+          { q: 'The method', a: 'Exploratory spatial analysis plus an origin\u2013destination network view of trips, summarized by census tract, to rank areas by scooter potential and surface the differences between the two cities.' },
+          { q: 'Credits', a: 'MUSA 550 final project by Xinge Zhang and Yiping Ying. The full write-up is in the published report linked from the repo.' }
+        ]
+      },
+      {
+        name: 'Precision Forecast',
+        eyebrow: 'Land cover · Forecasting',
+        tagline: 'Forecasting where green land turns to pavement — before it happens.',
+        lead: 'Using high-resolution land-cover data from the Chesapeake Conservancy, this project learns where pervious land — fields and tree canopy — is most likely to become impervious surface like roads and rooftops, so green-infrastructure planning can get ahead of development.',
+        why: 'Once land is paved, the runoff, heat and habitat loss are hard to undo. Forecasting conversions lets planners pre-position green infrastructure and protect the right land before development arrives.',
+        repoUrl: 'https://github.com/zhaxinge/Precision-Forecast',
+        liveUrl: '',
+        img: 'assets/img/mapsample.png',
+        aspect: '457 / 337',
+        stack: ['Python', 'Land-cover data', 'Chesapeake Conservancy', '1km moving frame', 'Change forecast'],
+        screens: [
+          { spot: { x: 5, y: 25, w: 27, h: 50 }, tourTitle: 'A patch of land, from above', tourBody: 'The landscape is sliced into 1km by 1km frames of high-resolution land cover — the raw input the model reads.', reelKicker: 'High-res input', reelLine: 'Land cover at 1km resolution.' },
+          { spot: { x: 31, y: 25, w: 34, h: 50 }, tourTitle: 'Read what is already built', tourBody: 'Roads, buildings and field edges are extracted as features that describe how developed each frame already is.', reelKicker: 'What is built', reelLine: 'Roads and parcels become features.' },
+          { spot: { x: 66, y: 25, w: 28, h: 50 }, tourTitle: 'Forecast the change', tourBody: 'The model outputs where pervious land is most likely to flip to impervious next — the brighter the area, the higher the risk of conversion.', reelKicker: 'Where it will pave', reelLine: 'A probability surface of conversion.' }
+        ],
+        annos: [
+          { x: 18, y: 50, title: 'Raw land-cover frame', body: 'A 1km by 1km high-resolution input tile.' },
+          { x: 47, y: 50, title: 'Built features', body: 'Roads and parcels detected from the imagery.' },
+          { x: 80, y: 45, title: 'Conversion risk', body: 'Brighter areas are likelier to become impervious.' },
+          { x: 35, y: 86, title: 'Sample frames', body: '1000m frames shown here to illustrate the method.' }
+        ],
+        tech: [
+          { q: 'The goal', a: 'Forecast where pervious land such as vegetation and soil will convert to impervious surface like pavement and rooftops, so planners can guide green-infrastructure investment and land protection.' },
+          { q: 'The data', a: 'High-resolution longitudinal land-cover data from the Chesapeake Conservancy, sampled on a 1000m by 1000m moving frame.' },
+          { q: 'The method', a: 'Land-cover features are extracted per frame and fed to a model that predicts the probability of pervious-to-impervious conversion across the landscape.' },
+          { q: 'Credits', a: 'Project by Xinge Zhang. Code and outputs are documented in the repo; presented as a 2023 Metro Lab Student Cup finalist.' }
+        ]
+      }
+    ];
+
+    this._t = null;
+  }
+
+  componentDidMount() { this.tick(); }
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  cur() { return this.PROJECTS[this.state.pi]; }
+
+  isAuto() {
+    const d = this.state.dir;
+    if (d === 'annotated') return false;
+    if (d === 'reel') return (this.props.autoplay ?? true);
+    return (this.props.autoplay ?? true) && this.state.playing;
+  }
+
+  tick() {
+    clearTimeout(this._t);
+    if (!this.isAuto()) return;
+    const speed = (this.props.autoplaySpeed ?? 3.6) * 1000;
+    const n = this.cur().screens.length;
+    this._t = setTimeout(() => {
+      this.setState(s => ({ step: (s.step + 1) % n }));
+      this.tick();
+    }, speed);
+  }
+
+  setProject(i) {
+    clearTimeout(this._t);
+    this.setState({ pi: i, step: 0, openTech: 0, playing: true }, () => this.tick());
+  }
+  setDir(d) {
+    clearTimeout(this._t);
+    this.setState({ dir: d, step: 0, playing: true }, () => this.tick());
+  }
+  goStep(i) {
+    clearTimeout(this._t);
+    this.setState({ step: i, playing: false });
+  }
+  togglePlay() {
+    this.setState(s => ({ playing: !s.playing }), () => this.tick());
+  }
+  toggleTech(i) {
+    this.setState(s => ({ openTech: s.openTech === i ? -1 : i }));
+  }
+
+  renderVals() {
+    const { pi, dir, step, playing, openTech } = this.state;
+    const accent = this.props.accent ?? '#f56a6a';
+    const P = this.cur();
+    const active = P.screens[step] || P.screens[0];
+    const total = P.screens.length;
+    const hasLive = !!P.liveUrl && P.liveUrl !== P.repoUrl;
+
+    const projTabBase = "font-family:var(--font-heading),serif;font-weight:700;font-size:0.78em;letter-spacing:0.08em;text-transform:uppercase;background:none;padding:0.5em 0.1em;cursor:pointer;white-space:nowrap;transition:color 0.2s ease-in-out;border:none;border-bottom:2px solid transparent;";
+    const projTabs = this.PROJECTS.map((p, i) => ({
+      name: p.name,
+      onClick: () => this.setProject(i),
+      style: projTabBase + (i === pi
+        ? "color:var(--fg-bold,#3d4449);border-bottom-color:var(--accent,#f56a6a);"
+        : "color:var(--fg-light,#9fa3a6);")
+    }));
+
+    const tabBase = "padding:0.62em 1.25em;font-family:var(--font-heading),serif;font-weight:700;font-size:0.72em;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;transition:background 0.2s ease-in-out,color 0.2s ease-in-out;";
+    const tab = (on) => tabBase + (on ? "background:var(--accent,#f56a6a);color:#ffffff;" : "background:transparent;color:var(--fg-light,#9fa3a6);");
+
+    const frameStyle = "position:relative;width:100%;aspect-ratio:" + P.aspect + ";background-color:#ffffff;"
+      + "background-image:url('" + P.img + "');background-size:contain;background-repeat:no-repeat;background-position:center;"
+      + "border:1px solid var(--border,rgba(210,215,217,0.75));border-radius:0.5em;overflow:hidden;";
+
+    const spot = (veil) => "position:absolute;left:" + active.spot.x + "%;top:" + active.spot.y + "%;width:" + active.spot.w + "%;height:" + active.spot.h + "%;"
+      + "border:2px solid var(--accent,#f56a6a);border-radius:10px;box-shadow:0 0 0 9999px rgba(255,255,255," + veil + ");"
+      + "transition:left 0.55s ease,top 0.55s ease,width 0.55s ease,height 0.55s ease;pointer-events:none;z-index:4;";
+
+    const activeDot = "width:26px;height:6px;border-radius:3px;background:var(--accent,#f56a6a);cursor:pointer;border:none;padding:0;transition:all 0.3s ease;";
+    const idleDot = "width:6px;height:6px;border-radius:3px;background:#d2d7d9;cursor:pointer;border:none;padding:0;transition:all 0.3s ease;";
+    const dots = P.screens.map((s, i) => ({ onClick: () => this.goStep(i), style: i === step ? activeDot : idleDot }));
+
+    const annos = P.annos.map((a, i) => ({
+      n: i + 1, title: a.title, body: a.body,
+      pinStyle: "position:absolute;left:" + a.x + "%;top:" + a.y + "%;transform:translate(-50%,-50%);"
+        + "width:26px;height:26px;border-radius:50%;background:var(--accent,#f56a6a);color:#fff;"
+        + "font-family:var(--font-heading),serif;font-weight:700;font-size:0.78em;display:flex;align-items:center;justify-content:center;"
+        + "box-shadow:0 0 0 4px rgba(255,255,255,0.85);z-index:5;"
+    }));
+
+    const tech = P.tech.map((t, i) => ({
+      q: t.q, a: t.a,
+      onClick: () => this.toggleTech(i),
+      icon: openTech === i ? 'fa-minus' : 'fa-plus',
+      bodyStyle: openTech === i ? "display:block;" : "display:none;"
+    }));
+
+    const modeTitle = dir === 'tour' ? 'Guided tour' : dir === 'annotated' ? 'Annotated screens' : 'Highlight reel';
+    const modeBlurb = dir === 'tour'
+      ? 'A narrated walkthrough that advances on its own \u2014 one plain-language step at a time.'
+      : dir === 'annotated'
+      ? 'The whole figure at once, with numbered callouts explaining what each part shows.'
+      : 'A short, looping highlight of the moments that matter \u2014 no clicking required.';
+
+    return {
+      accent,
+      projectTabs: projTabs,
+      eyebrow: P.eyebrow, name: P.name, tagline: P.tagline, lead: P.lead, why: P.why,
+      repoUrl: P.repoUrl, liveUrl: P.liveUrl, stack: P.stack,
+      hasLive, repoVariant: hasLive ? 'default' : 'primary',
+
+      isTour: dir === 'tour', isAnnotated: dir === 'annotated', isReel: dir === 'reel',
+      showTour: () => this.setDir('tour'),
+      showAnnotated: () => this.setDir('annotated'),
+      showReel: () => this.setDir('reel'),
+      tabTour: tab(dir === 'tour'), tabAnn: tab(dir === 'annotated'), tabReel: tab(dir === 'reel'),
+
+      modeTitle, modeBlurb,
+      frameStyle,
+      spotStyle: spot(0.74), reelSpotStyle: spot(0.86),
+      stepHuman: step + 1, total,
+      progressStyle: "height:100%;width:" + Math.round(((step + 1) / total) * 100) + "%;background:var(--accent,#f56a6a);border-radius:3px;transition:width 0.55s ease;",
+      playing, playIcon: playing ? 'fa-pause' : 'fa-play', togglePlay: () => this.togglePlay(),
+      dots,
+      activeTourTitle: active.tourTitle, activeTourBody: active.tourBody,
+      activeReelKicker: active.reelKicker, activeReelLine: active.reelLine,
+      annos, tech
+    };
+  }
+}
+</script>
+</body>
+</html>

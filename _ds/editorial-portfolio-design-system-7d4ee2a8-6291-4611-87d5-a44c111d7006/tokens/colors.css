@@ -1,0 +1,46 @@
+/* ===========================================================================
+   Colors — Editorial Portfolio Design System
+   Source: Editorial by HTML5 UP (_vars.scss $palette) + semantic aliases
+   ===========================================================================*/
+
+:root {
+  /* --- Base palette ------------------------------------------------------ */
+  --bg:            #ffffff;   /* page background                            */
+  --bg-alt:        #f5f6f7;   /* sidebar / muted surface                    */
+  --bg-alt-2:      #eff1f2;   /* darken(bg-alt, 2%) — inset search field    */
+
+  --fg:            #7f888f;   /* default body text — cool grey              */
+  --fg-bold:       #3d4449;   /* headings & strong — near-charcoal          */
+  --fg-light:      #9fa3a6;   /* muted / placeholder text                   */
+
+  --border:        rgba(210, 215, 217, 0.75); /* hairlines, dividers        */
+  --border-solid:  #d2d7d9;                    /* opaque equivalent          */
+  --border-bg:     rgba(230, 235, 237, 0.25);  /* code / inset fill          */
+
+  /* --- Accent — the one brand color (coral) ------------------------------ */
+  --accent:        #f56a6a;
+  --accent-hover:  #f67a7a;   /* lighten(accent, 3%)                        */
+  --accent-active: #f45c5c;   /* darken(accent, 3%)                         */
+  --accent-wash:   rgba(245, 106, 106, 0.05);  /* button hover fill         */
+  --accent-wash-2: rgba(245, 106, 106, 0.15);  /* button active fill        */
+  --on-accent:     #ffffff;   /* text on a filled accent surface            */
+
+  /* --- Semantic aliases (prefer these in components) --------------------- */
+  --text-body:     var(--fg);
+  --text-heading:  var(--fg-bold);
+  --text-muted:    var(--fg-light);
+  --text-on-accent:var(--on-accent);
+
+  --surface-page:    var(--bg);
+  --surface-sidebar: var(--bg-alt);
+  --surface-card:    var(--bg);
+  --surface-inset:   var(--bg-alt-2);
+  --surface-code:    var(--border-bg);
+
+  --link:          var(--accent);
+  --link-hover:    var(--accent);
+
+  --divider:       var(--border);
+  --field-border:  var(--border);
+  --focus-ring:    var(--accent);
+}

@@ -1,0 +1,9 @@
+/* ===========================================================================
+   Fonts — Editorial Portfolio Design System
+   The original site loads Open Sans + Roboto Slab from Google Fonts; we keep
+   that source of truth. Courier New is a system mono (no webfont needed).
+   FontAwesome (icon font) is loaded by consumers via CDN — see README
+   ICONOGRAPHY section.
+   ===========================================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Roboto+Slab:wght@400;700&display=swap');

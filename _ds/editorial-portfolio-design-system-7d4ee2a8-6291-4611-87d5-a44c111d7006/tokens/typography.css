@@ -1,0 +1,72 @@
+/* ===========================================================================
+   Typography — Editorial Portfolio Design System
+   Source: Editorial by HTML5 UP (_vars.scss $font, _typography.scss)
+   Headings: Roboto Slab (serif slab) · Body: Open Sans · Mono: Courier New
+   ===========================================================================*/
+
+:root {
+  /* --- Families ---------------------------------------------------------- */
+  --font-body:    'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Roboto Slab', Georgia, serif;
+  --font-mono:    'Courier New', ui-monospace, monospace;
+
+  /* --- Weights ----------------------------------------------------------- */
+  --weight-regular:      400;
+  --weight-bold:         600;  /* strong / labels                          */
+  --weight-heading:      700;  /* h1–h6, buttons                           */
+  --weight-heading-alt:  400;  /* nav menu — light slab caps               */
+
+  /* --- Tracking & leading ------------------------------------------------ */
+  --kerning-heading: 0.075em;  /* uppercase slab caps & buttons            */
+  --leading-body:    1.65;
+  --leading-heading: 1.5;
+  --leading-h1:      1.3;
+
+  /* --- Type scale (root body = 13pt ≈ 17px; values are em multiples) ----- */
+  --text-base: 17px;   /* 13pt at desktop; template steps down on narrow vw */
+  --fs-h1:   4em;      /* hero display                                      */
+  --fs-h2:   1.75em;   /* section title                                     */
+  --fs-h3:   1.25em;   /* card / sub-section title                          */
+  --fs-h4:   1.1em;
+  --fs-h5:   0.9em;
+  --fs-h6:   0.7em;    /* eyebrow / overline                               */
+  --fs-small:  0.8em;
+  --fs-button: 0.8em;
+
+  /* --- Semantic aliases -------------------------------------------------- */
+  --text-display: var(--font-heading);
+  --text-ui:      var(--font-body);
+}
+
+/* Baseline element styling so consumers get the editorial feel by default. */
+body {
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-heading);
+  margin: 0 0 1em 0;
+}
+h1 { font-size: var(--fs-h1); line-height: var(--leading-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); }
+
+strong, b { color: var(--text-heading); font-weight: var(--weight-bold); }
+
+a { color: var(--link); text-decoration: none; border-bottom: dotted 1px; }
+a:hover { border-bottom-color: var(--link-hover); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}

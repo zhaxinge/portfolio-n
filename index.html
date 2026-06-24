@@ -1,235 +1,776 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Xinge Zhang's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="Portfolio of Xinge Zhang - Data Analyst specializing in urban spatial analytics, GIS, and machine learning." />
-		<meta property="og:title" content="Xinge Zhang's Portfolio" />
-		<meta property="og:description" content="Portfolio of Xinge Zhang - Data Analyst specializing in urban spatial analytics, GIS, and machine learning." />
-		<meta property="og:type" content="website" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!-- Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-XBVKQJNT1Y"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-XBVKQJNT1Y');
-		</script>
-	</head>
-	<body class="is-preload">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/colors.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/typography.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/styles.css">
+<script src="_ds/editorial-portfolio-design-system-7d4ee2a8-6291-4611-87d5-a44c111d7006/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg, #ffffff); color: var(--fg, #7f888f); font-family: var(--font-body), 'Open Sans', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  @keyframes livedot { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  @keyframes reelin { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
+  a { color: inherit; }
+</style>
+</helmet>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<div style="--accent: {{ accent }}; display: flex; align-items: flex-start; min-height: 100vh; background: var(--bg, #ffffff);">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+  <button onClick="{{ toggleSidebar }}" aria-label="Toggle sidebar" style="{{ toggleStyle }}"><i class="fa-solid {{ toggleIcon }}"></i></button>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Xinge Zhang</strong> | Portfolio</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="https://www.instagram.com/ssee0132/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+  <!-- ============ SIDEBAR ============ -->
+  <sc-if value="{{ sidebarOpen }}" hint-placeholder-val="{{ true }}">
+  <aside style="flex: none; width: 23em; align-self: stretch; position: sticky; top: 0; height: 100vh; overflow-y: auto; overflow-x: hidden; background: var(--bg-alt, #f5f6f7); border-right: 1px solid var(--border, rgba(210,215,217,0.75)); padding: 2.4em 2.2em 2em;">
+    <div onClick="{{ homeOnClick }}" style="cursor: pointer; font-family: var(--font-heading), serif; font-size: 1.05em; letter-spacing: 0.04em; margin-bottom: 0.2em;">
+      <span style="color: var(--fg-bold, #3d4449); font-weight: 700;">Xinge Zhang</span>
+    </div>
+    <div style="font-family: var(--font-heading), serif; font-size: 0.66em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-light, #9fa3a6); margin-bottom: 2.2em;">{{ profileRole }}</div>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<header>
-											<h1>Hi, I'm Xinge Zhang<br /></h1>
-											<p> I am a data analyst with a Master's degree in Urban Spatial Analytics from the University of Pennsylvania.Notably, I was a finalist in the 2023 Metro Lab Student Cup and a winning artist in SMACH 2021. I also achieved the second prize in the 2019 UIA-CBA Construction Workshop.</p>
-										</header>
-										<ul class="actions">
-											<li><a href="RESUME.html" class="button big">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image object">
-										<img src="images/IMG_2150.JPG" alt="" />
-									</span>
-								</section>
+    <div style="position: relative; margin-bottom: 2.4em;">
+      <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Search work" style="appearance: none; background: var(--bg, #fff); border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: var(--radius, 0.375em); height: 2.85em; width: 100%; padding: 0 2.6em 0 1em; color: var(--fg, #7f888f); font-family: var(--font-body), sans-serif; font-size: 0.92em; outline: 0;">
+      <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 1em; top: 50%; transform: translateY(-50%) scaleX(-1); color: var(--fg, #7f888f); opacity: 0.35;"></i>
+    </div>
 
+    <nav style="border-top: 2px solid var(--border, rgba(210,215,217,0.75)); padding-top: 1.6em; margin-bottom: 2.4em;">
+      <button onClick="{{ homeOnClick }}" style="{{ homeNavStyle }}">Home</button>
+      <sc-for list="{{ menuGroups }}" as="g" hint-placeholder-count="2">
+        <div style="margin-top: 1.4em;">
+          <div style="{{ g.labelStyle }}">{{ g.name }}</div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+            <button onClick="{{ it.onClick }}" style="{{ it.style }}">{{ it.title }}</button>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="margin-top: 1.4em;">
+        <div style="{{ awardsLabelStyle }}">Awards</div>
+        <sc-for list="{{ awardsNav }}" as="it" hint-placeholder-count="2">
+          <button onClick="{{ it.onClick }}" style="{{ it.style }}">{{ it.title }}</button>
+        </sc-for>
+      </div>
+      <button onClick="{{ aboutOnClick }}" style="{{ aboutNavStyle }}">About me</button>
+    </nav>
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Selected works</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="https://www.loom.com/share/7b2d18e9bed64f1684e970ae22726a07" class="image"><img src="images/app.gif" alt="" /></a>
-											<h3>Bulk Traffic Review Tool</h3>
-											<p>An interactive web tool for analyzing intersection traffic data by day type (weekday, Saturday, Sunday). Upload traffic counts, visualize patterns with Chart.js, and review bulk intersection data with filtering and export capabilities.</p>
-											<ul class="actions">
-												<li><a href="TRAFFIC.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="precision-forecast - 2.html" class="image"><img src="images/predict draft.jpg" alt="" /></a>
-											<h3>Precision Forecasts of Land Cover Change</h3>
-											<p>By leveraging high-resolution longitudinal land cover data provided by the Chesapeake Conservancy, the model will predict land cover conversions from pervious to impervious surfaces. This forecast will enable land use and environmental planners to identify where urban growth will occur, propose green infrastructure accordingly, and prioritize lands for protection. </p>
-											<ul class="actions">
-												<li><a href="precision-forecast.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="BIKERISK.html" class="image"><img src="images/risk.png" alt="" /></a>
-											<h3>Geospatial Risk Prediction</h3>
-											<p>From 2021-2022 alone, the number of bike-sharing stations in Chicago has increased from 828 to 1,481. According to divvy, their site selection takes full account of the principles of EQUITY as well as SAFETY. The purpose of this study is to test the reasonableness of site selection.</p>
-											<ul class="actions">
-												<li><a href="BIKERISK.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="SCOOTER.html" class="image"><img src="images/scooter.jpg" alt="" /></a>
-											<h3>Comparison Analysis of Escooter Usage in Chicago and Austin</h3>
-											<p>Through exploratory analysis of the e-scooter dataset in Austin and Chicago 2019, and the census tract-based analysis model, we will be able to help decision-makers to identify more valuable investment areas, and better understand the motivation and behavioral characteristics of shared scooters users.</p>
-											<ul class="actions">
-												<li><a href="SCOOTER.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="BIKEPRE.html" class="image"><img src="images/bike.jpg" alt="" /></a>
-											<h3>Ride Share Prediction in New York</h3>
-											<p>In this analysis, I use the Citi bike usage data for April 2021 and try to build a predictive model for shared bike usage to help guide rebalancing.</p>
-											<ul class="actions">
-												<li><a href="BIKEPRE.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="PRICE.html" class="image"><img src="images/houseprice.jpg" alt="" /></a>
-											<h3>Predicting Housing Prices in Charlotte</h3>
-											<p>In this project, we refered to the hedonic home price model and the tier classification of zillow to build a house price prediction model for the new commer in Charlotte to find suitable houses in the city. </p>
-											<ul class="actions">
-												<li><a href="PRICE.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="PARKING.html" class="image"><img src="images/app.gif" alt="" /></a>
-											<h3>Parking Occupancy Rate Prediction</h3>
-											<p>In this project, we designed an multiple linear regression algorithm based app called Super Finder to help local residents in San Francisco to find real-time empty spots in the city. </p>
-											<ul class="actions">
-												<li><a href="PARKING.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="HOUSE.html" class="image"><img src="images/111.jpg" alt="" /></a>
-											<h3>Targeting A Housing Subsidy</h3>
-											<p>The purpose of this analysis is to model the Department of Housing and Community Development (HCD) by analyzing data from previous years' claims to receive the credit. With this model, Development (HCD) will better target policy populations and avoid ineffective financial expenditures and wasted resources.</p>
-											<ul class="actions">
-												<li><a href="HOUSE.html" class="button">More</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="TOD.html" class="image"><img src="images/tod.jpg" alt="" /></a>
-											<h3>Transit Oreinted Development in Queens, New York, 2009-2020</h3>
-											<p>This project aims to provide an overview to observe the changes in TOD and Non-TOD areas from 2009-2020 since the implementation of PlaNYC2030, and to illustrate the significance of identifying TOD areas for city development.</p>
-											<ul class="actions">
-												<li><a href="TOD.html" class="button">More</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
+    <section style="border-top: 2px solid var(--border, rgba(210,215,217,0.75)); padding-top: 1.6em;">
+      <h2 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.1em; color: var(--fg-bold, #3d4449); margin: 0 0 0.6em;">Get in touch</h2>
+      <p style="margin: 0 0 1em; color: var(--fg, #7f888f); font-size: 0.9em;">If you’re interested in my work, I’d be glad to hear from you.</p>
+      <div style="display: flex; flex-direction: column; gap: 0.5em; font-size: 0.9em;">
+        <a href="mailto:{{ email }}" style="color: var(--accent, #f56a6a); border-bottom: dotted 1px; align-self: flex-start;"><i class="fa-solid fa-envelope" style="margin-right: 0.6em; color: var(--fg-light, #9fa3a6);"></i>{{ email }}</a>
+        <a href="{{ githubUrl }}" target="_blank" rel="noopener" style="color: var(--accent, #f56a6a); border-bottom: dotted 1px; align-self: flex-start;"><i class="fa-brands fa-github" style="margin-right: 0.6em; color: var(--fg-light, #9fa3a6);"></i>github.com/zhaxinge</a>
+      </div>
+    </section>
 
-						</div>
-					</div>
-					
-				<!-- Sidebar -->
-				<div id="sidebar">
-					<div class="inner">
-						<!-- Search -->
-							<section id="search" class="alt">
-								<form method="post" action="#">
-									<input type="text" name="query" id="query" placeholder="Search" />
-								</form>
-							</section>
-						<!-- Menu -->
-							<nav id="menu">
-								<header class="major">
-									<h2>Menu</h2>
-								</header>
-								<ul>
-									<li><a href="index.html">Homepage</a></li>
-									<li>
-										<span class="opener">Spatial Analysis</span>
-										<ul>
-											<li><a href="precision-forecast.html">Precision Forecasts of Land Cover Change</a></li>
-											<li><a href="TOD.html">TOD Development Analysis in New York</a></li>
-											<li><a href="BIKERISK.html">Shared Bikes Usage Risk Analysis in Chicago</a></li>
-										</ul>
-									</li>
-									<li>
-										<span class="opener">Machine Learning</span>
-										<ul>
-											<li><a href="PARKING.html">Predictive Parking Occupancy Rate in San Francisco</a></li>
-											<li><a href="BIKEPRE.html">Ride Share Prediction in New York</a></li>
-											<li><a href="PRICE.html">House Price Prediction in Charlotte</a></li>
-										</ul>
-									</li>
-									<li>
-										<span class="opener">Planning & Strategy</span>
-										<ul>
-											<li><a href="HOUSE.html">Resident Behavior Prediction & Cost-Benefit Optimization</a></li>
-											<li><a href="GUIYU.html">Revive of Guiyu---Landfill Rehabilitation Planning</a></li>
-											<li><a href="swphilly.html">Imagining the future of Southwest Philidelphia in 2050---Youth-led Movement and Urban Design</a></li>
-										</ul>
-									</li>
-									<li>
-										<span class="opener">Data Tools</span>
-										<ul>
-											<li><a href="TRAFFIC.html">Bulk Traffic Review Tool</a></li>
-										</ul>
-									</li>
-									<li>
-										<span class="opener">Design & Arts</span>
-										<ul>
-											<li><a href="ART.html">WINNER of SMACH 2021</a></li>
-											<li><a href="FLOOD.html">Landscape Design</a></li>
-										</ul>
-									</li>
-                                    <li><a href="otherwork.html">Other work</a></li>
-									<li><a href="aboutme.html">About Me</a></li>
-								</ul>
-							</nav>
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>If you are interested in my work, I am willing to hearing from you.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">zhaxinge@alumni.upenn.edu</a></li>
-										<li class="icon solid fa-phone">(267) 303-6766</li>
-									</ul>
-								</section>
+    <footer style="margin-top: 2.4em; color: var(--fg-light, #9fa3a6); font-size: 0.78em;">© Xinge Zhang. Built on Editorial by HTML5 UP.</footer>
+  </aside>
+  </sc-if>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Xinge Zhang's Portfolio. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+  <!-- ============ MAIN ============ -->
+  <main style="flex: 1; min-width: 0;">
 
-						</div>
-					</div>
+  <!-- ---------- HOME ---------- -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="max-width: 60em; margin: 0 auto; padding: 4em 3em 6em;">
+    <section style="display: flex; gap: 3.5em; align-items: stretch; padding-bottom: 3.5em; border-bottom: 1px solid var(--border, rgba(210,215,217,0.75)); margin-bottom: 3.2em;">
+      <div style="flex: 1 1 56%;">
+        <h1 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 3em; line-height: 1.2; margin: 0 0 0.5em; color: var(--fg-bold, #3d4449);">Hi, I’m Xinge Zhang</h1>
+        <p style="margin: 0 0 1.6em; color: var(--fg, #7f888f); font-size: 1.05em; line-height: 1.7;">{{ bannerBlurb }}</p>
+        <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" variant="primary" size="large" onClick="{{ learnMore }}" hint-size="auto,3.65em">Learn more</x-import>
+      </div>
+      <div style="flex: 1 1 44%; min-height: 18em; border-radius: var(--radius, 0.375em); background: var(--bg-alt, #f5f6f7) url('assets/img/scooter.jpg') center/contain no-repeat;"></div>
+    </section>
 
-			</div>
+    <header style="margin-bottom: 2em;">
+      <h2 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.75em; margin: 0; color: var(--fg-bold, #3d4449);">Selected works</h2>
+      <p style="margin: 0.3em 0 0; color: var(--fg-light, #9fa3a6); font-size: 0.95em;">{{ worksCaption }}</p>
+    </header>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <p style="color: var(--fg-light, #9fa3a6);">No projects match your search.</p>
+    </sc-if>
 
-	</body>
+    <sc-for list="{{ homeSections }}" as="s" hint-placeholder-count="2">
+      <section style="--accent: {{ s.color }}; margin-bottom: 3.6em;">
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a); border-bottom: 2px solid var(--border, rgba(210,215,217,0.75)); padding-bottom: 0.7em; margin-bottom: 1.8em;">{{ s.name }}</div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5em 3em;">
+          <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3">
+            <article onClick="{{ c.onClick }}" style="cursor: pointer; display: flex; flex-direction: column;">
+              <div style="{{ c.thumbStyle }}">
+                <sc-if value="{{ c.isPipeline }}" hint-placeholder-val="{{ false }}">
+                  <div style="position: absolute; left: 13%; right: 13%; top: 50%; height: 1px; background: var(--border, rgba(210,215,217,0.75));"></div>
+                  <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 11%;">
+                    <sc-for list="{{ c.miniNodes }}" as="m" hint-placeholder-count="4">
+                      <div style="width: 26px; height: 26px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.66em; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 4px var(--bg-alt, #f5f6f7);">{{ m.n }}</div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+              <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #f56a6a); margin: 1.1em 0 0.4em;">{{ c.eyebrow }}</div>
+              <h3 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.25em; color: var(--fg-bold, #3d4449); margin: 0 0 0.5em; line-height: 1.3;">{{ c.title }}</h3>
+              <p style="margin: 0 0 0.9em; color: var(--fg, #7f888f); line-height: 1.6; flex-grow: 1;">{{ c.tagline }}</p>
+              <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.74em; letter-spacing: 0.075em; text-transform: uppercase; color: var(--accent, #f56a6a);">View demo&nbsp;&rarr;</div>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+
+    <section id="awards" style="--accent: #c98a2e; margin-top: 4.8em; padding-top: 3em; border-top: 2px solid var(--border, rgba(210,215,217,0.75));">
+      <header style="margin-bottom: 2em;">
+        <h2 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.75em; margin: 0; color: var(--fg-bold, #3d4449);">Awards &amp; recognition</h2>
+        <p style="margin: 0.3em 0 0; color: var(--fg-light, #9fa3a6); font-size: 0.95em;">A research presentation and an art prize, beyond the code.</p>
+      </header>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5em 3em;">
+
+        <article style="display: flex; flex-direction: column;">
+          <div style="width: 100%; aspect-ratio: 16 / 10; border-radius: var(--radius, 0.375em); background: var(--bg-alt, #f5f6f7) url('assets/img/mapsample.png') center/contain no-repeat;"></div>
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #f56a6a); margin: 1.1em 0 0.4em; display: flex; align-items: center; gap: 0.5em;"><i class="fa-solid fa-award"></i>Metro Lab Student Cup · 2023 · Finalist</div>
+          <h3 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.25em; color: var(--fg-bold, #3d4449); margin: 0 0 0.5em; line-height: 1.3;">Precision Forecast</h3>
+          <p style="margin: 0 0 1.1em; color: var(--fg, #7f888f); line-height: 1.6; flex-grow: 1;">A forecast of land-cover change for the Chesapeake region — predicting where green land turns to pavement, to guide green-infrastructure planning. Presented as a 2023 Metro Lab Student Cup finalist.</p>
+          <div><x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="https://github.com/zhaxinge/Precision-Forecast" target="_blank" rel="noopener" size="small" icon="fa-brands fa-github" hint-size="auto,3em">View project</x-import></div>
+        </article>
+
+        <article style="display: flex; flex-direction: column;">
+          <div style="position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius, 0.375em);">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="smach-art-2021" shape="rounded" radius="6" placeholder="Drop your SMACH artwork" style="position: absolute; inset: 0; width: 100%; height: 100%;" hint-size="100%,100%"></x-import>
+          </div>
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #f56a6a); margin: 1.1em 0 0.4em; display: flex; align-items: center; gap: 0.5em;"><i class="fa-solid fa-palette"></i>SMACH · 2021 · Winning artist</div>
+          <h3 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 1.25em; color: var(--fg-bold, #3d4449); margin: 0 0 0.5em; line-height: 1.3;">SMACH — Land art</h3>
+          <p style="margin: 0 0 1.1em; color: var(--fg, #7f888f); line-height: 1.6; flex-grow: 1;">Recognized as a winning artist at SMACH 2021, a contemporary land-art competition held in the Italian Dolomites. Drop a photo of the work into the frame above.</p>
+        </article>
+
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ---------- ABOUT ---------- -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width: 48em; margin: 0 auto; padding: 4.5em 3em 6em;">
+    <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">About me</div>
+    <h1 style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 2.6em; line-height: 1.2; margin: 0.3em 0 0.8em; color: var(--fg-bold, #3d4449);">Xinge Zhang</h1>
+    <sc-for list="{{ aboutParas }}" as="para" hint-placeholder-count="3">
+      <p style="margin: 0 0 1.2em; color: var(--fg, #7f888f); font-size: 1.08em; line-height: 1.75; max-width: 64ch;">{{ para }}</p>
+    </sc-for>
+    <div style="margin-top: 1.6em; display: flex; gap: 0.7em;">
+      <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="{{ githubUrl }}" target="_blank" rel="noopener" variant="primary" icon="fa-brands fa-github" hint-size="auto,3.5em">My GitHub</x-import>
+      <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="mailto:{{ email }}" icon="fa-solid fa-envelope" hint-size="auto,3.5em">Email me</x-import>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ---------- PROJECT ---------- -->
+  <sc-if value="{{ isProject }}" hint-placeholder-val="{{ false }}">
+  <div style="--accent: {{ projectColor }}; max-width: 60em; margin: 0 auto; padding: 2.6em 3em 6em;">
+
+    <button onClick="{{ back }}" style="background: none; border: none; cursor: pointer; padding: 0; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-light, #9fa3a6); margin-bottom: 2.4em; display: inline-flex; align-items: center; gap: 0.5em;" style-hover="color: var(--accent, #f56a6a);">
+      <i class="fa-solid fa-arrow-left"></i> Back to work
+    </button>
+
+    <!-- Hero -->
+    <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">{{ eyebrow }}</div>
+    <h1 style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 3em; line-height: 1.14; margin: 0.35em 0 0.25em; text-wrap: balance;">{{ name }}</h1>
+    <p style="font-family: var(--font-heading), serif; font-weight: 400; color: var(--fg-bold, #3d4449); font-size: 1.3em; line-height: 1.45; margin: 0 0 1.1em; max-width: 42ch;">{{ tagline }}</p>
+    <p style="font-size: 1.1em; line-height: 1.7; color: #565d63; margin: 0 0 0.9em; max-width: 66ch;">{{ lead }}</p>
+    <p style="font-size: 1.0em; line-height: 1.65; color: var(--fg, #7f888f); margin: 0 0 1.6em; max-width: 66ch;"><strong style="color: var(--fg-bold, #3d4449); font-weight: 600;">Why it matters.</strong> {{ why }}</p>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.7em; margin-bottom: 1.1em;">
+      <sc-if value="{{ hasLive }}" hint-placeholder-val="{{ true }}">
+        <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="{{ liveUrl }}" target="_blank" rel="noopener" variant="primary" icon="fa-solid fa-play" hint-size="auto,3.5em">Open live demo</x-import>
+      </sc-if>
+      <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Button" href="{{ repoUrl }}" target="_blank" rel="noopener" variant="{{ repoVariant }}" icon="fa-brands fa-github" hint-size="auto,3.5em">View on GitHub</x-import>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5em; margin-bottom: 3.2em;">
+      <sc-for list="{{ stack }}" as="chip" hint-placeholder-count="5">
+        <x-import component-from-global-scope="EditorialPortfolioDesignSystem_7d4ee2.Tag" hint-size="auto,2em">{{ chip }}</x-import>
+      </sc-for>
+    </div>
+
+    <!-- Demo header + mode switcher -->
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1em; padding-bottom: 1.1em; border-bottom: 2px solid var(--border, rgba(210,215,217,0.75)); margin-bottom: 1.8em;">
+      <div>
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">See it in action</div>
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.5em; margin-top: 0.15em;">{{ modeTitle }}</div>
+        <div style="font-size: 0.95em; color: var(--fg-light, #9fa3a6); margin-top: 0.2em; max-width: 50ch;">{{ modeBlurb }}</div>
+      </div>
+      <div style="display: inline-flex; border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: 0.375em; overflow: hidden; flex: none;">
+        <button onClick="{{ showTour }}" style="{{ tabTour }}">Tour</button>
+        <button onClick="{{ showAnnotated }}" style="{{ tabAnn }}">Annotated</button>
+        <button onClick="{{ showReel }}" style="{{ tabReel }}">Reel</button>
+      </div>
+    </div>
+
+    <!-- ===== TOUR ===== -->
+    <sc-if value="{{ isTour }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <sc-if value="{{ isFigure }}" hint-placeholder-val="{{ true }}">
+        <div style="{{ frameStyle }}">
+          <div style="{{ spotStyle }}"></div>
+          <div style="position: absolute; left: 1em; top: 1em; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.68em; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent, #f56a6a); z-index: 5;">Step {{ stepHuman }} / {{ total }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isPipeline }}" hint-placeholder-val="{{ false }}">
+        <div style="background: var(--bg-alt, #f5f6f7); border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: 0.5em; padding: 1.8em 1.5em; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5em;">
+          <sc-for list="{{ nodeList }}" as="node" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 0.5em; flex: 1 1 150px; min-width: 150px;">
+              <i class="fa-solid fa-chevron-right" style="{{ node.arrowStyle }}"></i>
+              <div style="{{ node.style }}">
+                <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.7em; display: flex; align-items: center; justify-content: center;">{{ node.n }}</div>
+                <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.9em; margin-top: 0.55em; line-height: 1.25;">{{ node.title }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <div style="height: 3px; background: var(--bg-alt-2, #eff1f2); border-radius: 3px; margin: 0.9em 0 1.4em; overflow: hidden;">
+        <div style="{{ progressStyle }}"></div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 1.4em;">
+        <button onClick="{{ togglePlay }}" aria-label="Play or pause" style="flex: none; width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--accent, #f56a6a); color: #fff; cursor: pointer; font-size: 0.9em; transition: filter 0.2s ease-in-out;" style-hover="filter: brightness(1.05);">
+          <i class="fa-solid {{ playIcon }}"></i>
+        </button>
+        <div style="flex: 1;">
+          <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.2em;">{{ activeTitle }}</div>
+          <p style="margin: 0.3em 0 0; color: var(--fg, #7f888f); font-size: 1.0em; line-height: 1.65; max-width: 64ch;">{{ activeBody }}</p>
+        </div>
+        <div style="flex: none; display: flex; align-items: center; gap: 0.45em; padding-top: 0.7em;">
+          <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="4">
+            <button onClick="{{ dot.onClick }}" aria-label="Go to step" style="{{ dot.style }}"></button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ===== ANNOTATED ===== -->
+    <sc-if value="{{ isAnnotated }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <sc-if value="{{ isFigure }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.2em; align-items: start;">
+          <div style="{{ frameStyle }}">
+            <sc-for list="{{ annos }}" as="a" hint-placeholder-count="4">
+              <div style="{{ a.pinStyle }}">{{ a.n }}</div>
+            </sc-for>
+          </div>
+          <div>
+            <sc-for list="{{ annos }}" as="a" hint-placeholder-count="4">
+              <div style="display: flex; gap: 0.8em; padding: 0.7em 0; border-top: 1px solid var(--border, rgba(210,215,217,0.75));">
+                <div style="flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; display: flex; align-items: center; justify-content: center;">{{ a.n }}</div>
+                <div>
+                  <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.98em;">{{ a.title }}</div>
+                  <div style="color: var(--fg, #7f888f); font-size: 0.92em; line-height: 1.55; margin-top: 0.1em;">{{ a.body }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isPipeline }}" hint-placeholder-val="{{ false }}">
+        <div style="background: var(--bg-alt, #f5f6f7); border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: 0.5em; padding: 1.8em 1.5em; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5em; margin-bottom: 1.8em;">
+          <sc-for list="{{ nodeList }}" as="node" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 0.5em; flex: 1 1 150px; min-width: 150px;">
+              <i class="fa-solid fa-chevron-right" style="{{ node.arrowStyle }}"></i>
+              <div style="{{ node.style }}">
+                <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.7em; display: flex; align-items: center; justify-content: center;">{{ node.n }}</div>
+                <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.9em; margin-top: 0.55em; line-height: 1.25;">{{ node.title }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.4em;">
+          <sc-for list="{{ annos }}" as="a" hint-placeholder-count="4">
+            <div style="display: flex; gap: 0.8em; padding: 0.8em 0; border-top: 1px solid var(--border, rgba(210,215,217,0.75));">
+              <div style="flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; display: flex; align-items: center; justify-content: center;">{{ a.n }}</div>
+              <div>
+                <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.98em;">{{ a.title }}</div>
+                <div style="color: var(--fg, #7f888f); font-size: 0.92em; line-height: 1.55; margin-top: 0.1em;">{{ a.body }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    </sc-if>
+
+    <!-- ===== REEL ===== -->
+    <sc-if value="{{ isReel }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <sc-if value="{{ isFigure }}" hint-placeholder-val="{{ true }}">
+        <div style="{{ frameStyle }}">
+          <div style="{{ reelSpotStyle }}"></div>
+          <div style="position: absolute; left: 1.2em; top: 1.1em; display: flex; align-items: center; gap: 0.5em; z-index: 6;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #f56a6a); animation: livedot 1.6s ease-in-out infinite;"></span>
+            <span style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-light, #9fa3a6);">Reel · loops automatically</span>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isPipeline }}" hint-placeholder-val="{{ false }}">
+        <div style="position: relative; background: var(--bg-alt, #f5f6f7); border: 1px solid var(--border, rgba(210,215,217,0.75)); border-radius: 0.5em; padding: 1.8em 1.5em; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.5em;">
+          <div style="position: absolute; left: 1.2em; top: 0.9em; display: flex; align-items: center; gap: 0.5em; z-index: 6;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #f56a6a); animation: livedot 1.6s ease-in-out infinite;"></span>
+            <span style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.62em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-light, #9fa3a6);">Reel · loops automatically</span>
+          </div>
+          <sc-for list="{{ nodeList }}" as="node" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 0.5em; flex: 1 1 150px; min-width: 150px; margin-top: 1.6em;">
+              <i class="fa-solid fa-chevron-right" style="{{ node.arrowStyle }}"></i>
+              <div style="{{ node.style }}">
+                <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent, #f56a6a); color: #fff; font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.7em; display: flex; align-items: center; justify-content: center;">{{ node.n }}</div>
+                <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 0.9em; margin-top: 0.55em; line-height: 1.25;">{{ node.title }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <div key="{{ stepHuman }}" style="text-align: center; margin: 1.6em 0 0.4em; animation: reelin 0.5s ease;">
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.66em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #f56a6a);">{{ activeKicker }}</div>
+        <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.7em; line-height: 1.2; margin-top: 0.15em;">{{ activeLine }}</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.45em; justify-content: center; margin-top: 0.9em;">
+        <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="4">
+          <div style="{{ dot.style }}"></div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ===== TECHNICAL ===== -->
+    <div style="margin-top: 4em;">
+      <div style="font-family: var(--font-heading), serif; font-weight: 700; font-size: 0.72em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent, #f56a6a);">Under the hood</div>
+      <div style="font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.5em; margin: 0.15em 0 1.2em;">For the technical reader</div>
+      <sc-for list="{{ tech }}" as="t" hint-placeholder-count="4">
+        <div style="border-top: 1px solid var(--border, rgba(210,215,217,0.75));">
+          <button onClick="{{ t.onClick }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1em; padding: 1em 0; background: transparent; border: none; cursor: pointer; text-align: left; font-family: var(--font-heading), serif; font-weight: 700; color: var(--fg-bold, #3d4449); font-size: 1.05em;">
+            <span>{{ t.q }}</span>
+            <i class="fa-solid {{ t.icon }}" style="color: var(--accent, #f56a6a); font-size: 0.8em;"></i>
+          </button>
+          <div style="{{ t.bodyStyle }}">
+            <p style="margin: 0 0 1.1em; color: var(--fg, #7f888f); font-size: 1.0em; line-height: 1.7; max-width: 70ch;">{{ t.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+      <div style="border-top: 1px solid var(--border, rgba(210,215,217,0.75));"></div>
+    </div>
+
+    <p style="margin-top: 3.2em; padding-top: 1.4em; border-top: 1px solid var(--border, rgba(210,215,217,0.75)); font-size: 0.82em; color: var(--fg-light, #9fa3a6); line-height: 1.6; max-width: 64ch;">
+      <i class="fa-solid fa-code-branch" style="color: var(--accent, #f56a6a); margin-right: 0.5em;"></i>
+      Every project here is built from one template — its summary, walkthrough, annotations and technical notes all read from a single project data object, so adding a repo rebuilds a full page.
+    </p>
+
+  </div>
+  </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1240, &quot;height&quot;: 920}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#f56a6a&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;autoplay&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;}, &quot;autoplaySpeed&quot;: {&quot;editor&quot;: &quot;float&quot;, &quot;default&quot;: 3.6, &quot;min&quot;: 1.5, &quot;max&quot;: 8, &quot;step&quot;: 0.2, &quot;tsType&quot;: &quot;number&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: 'home', pid: 'traffic', dir: 'tour', step: 0, playing: true, openTech: 0, query: '', sidebarOpen: true };
+
+    this.PROFILE = {
+      role: 'Data analyst · spatial & agentic BI',
+      email: 'zhaxinge@alumni.upenn.edu',
+      github: 'https://github.com/zhaxinge',
+      blurb: 'I\u2019m a data analyst working in urban spatial analytics, GIS and machine learning, with a Master\u2019s in Urban Spatial Analytics from the University of Pennsylvania. Lately I\u2019ve been building agentic BI tools that put verified data first and keep a human in the loop.',
+      about: [
+        'I\u2019m a data analyst focused on urban spatial analytics, GIS and machine learning, with a Master\u2019s in Urban Spatial Analytics from the University of Pennsylvania.',
+        'Lately I\u2019ve been building agentic BI tools \u2014 systems that compute verified facts first and use AI second, always with a human in the loop. The three featured here research data gaps in a federal portal, draft traffic-signal review notes, and make public spending legible.',
+        'Earlier work spans transportation, housing, parking and land-cover analysis across several U.S. cities.'
+      ]
+    };
+
+    this.GROUPS = [
+      { name: 'Agentic BI', color: '#f56a6a', items: ['traffic', 'dotgap', 'budget'] },
+      { name: 'Spatial analysis', color: '#1f9e84', items: ['parking', 'charlotte', 'scooter'] }
+    ];
+    this.FEATURED = ['traffic', 'dotgap', 'budget', 'parking', 'charlotte', 'scooter'];
+
+    const pipe = (stages) => stages; // identity, for readability
+
+    this.PROJECTS = {
+      traffic: {
+        id: 'traffic', kind: 'pipeline',
+        name: 'Traffic Report Agent', eyebrow: 'Agentic BI · Human-in-the-loop',
+        tagline: 'An agent that drafts traffic-signal review notes \u2014 and never ships without a human.',
+        lead: 'This tool drafts the review notes for traffic-signal detector data automatically, flags the tricky cases, then routes everything to a human to approve or correct \u2014 and learns from every edit so the next draft is better.',
+        why: 'Reviewing detector data for hundreds of intersections is repetitive expert work. Automating the first draft saves hours, while human sign-off keeps the judgement \u2014 and the accountability \u2014 with a person.',
+        repoUrl: 'https://github.com/zhaxinge/traffic-report-agent', liveUrl: '',
+        stack: ['JavaScript', 'Node + API', 'RAG memory', 'Automated judge', 'Human-in-the-loop'],
+        stages: pipe([
+          { title: 'Check the data', body: 'Run deterministic quality checks on raw traffic-detector counts \u2014 the facts the rest of the pipeline must respect.', kicker: 'Facts first', line: 'Deterministic QC on every detector.' },
+          { title: 'Recall past corrections', body: 'Retrieve relevant reviewer notes and similar past cases from memory before drafting anything.', kicker: 'Remember', line: 'RAG memory of human corrections.' },
+          { title: 'Draft the notes', body: 'The model drafts review notes for tricky patterns \u2014 low samples, dead detectors, overcounts.', kicker: 'Draft', line: 'The LLM writes a first pass.' },
+          { title: 'Pass the quality gate', body: 'An automated judge screens the draft for problems before a person ever sees it.', kicker: 'Screen', line: 'An automated judge checks it.' },
+          { title: 'Human sign-off', body: 'A reviewer approves or corrects the notes. Nothing ships without a person.', kicker: 'Human in the loop', line: 'A reviewer has the final say.' },
+          { title: 'Learn from the edit', body: 'Corrections flow back into memory, so the next draft starts smarter.', kicker: 'Improve', line: 'Every correction trains the next draft.' }
+        ]),
+        tech: [
+          { q: 'The problem', a: 'Reviewing traffic-detector data across hundreds of intersections is repetitive expert work. The goal is to draft the review notes automatically while keeping a person firmly in control of the judgement.' },
+          { q: 'The pipeline', a: 'Deterministic QC \u2192 context merge \u2192 retrieval \u2192 agent draft \u2192 quality gate \u2192 human review \u2192 feedback loop. A /api/health endpoint returns this map so the pipeline is inspectable.' },
+          { q: 'The memory', a: 'A local RAG layer keeps three memory lanes \u2014 what happened at a specific intersection, reusable human judgement, and historical detector patterns \u2014 so corrections persist instead of being re-explained each time.' },
+          { q: 'Safety', a: 'Deterministic QC facts are authoritative; reviewer notes teach the model how to describe patterns, not what the numbers are. No report ships without human sign-off, and the API key stays server-side.' }
+        ]
+      },
+      dotgap: {
+        id: 'dotgap', kind: 'pipeline',
+        name: 'DOT Data Gap Researcher', eyebrow: 'Agentic BI · Open data',
+        tagline: 'An agent that finds what\u2019s missing from a government data portal \u2014 with receipts.',
+        lead: 'This agent catalogs the U.S. DOT open-data portal, compares it against what federal and partner sources say should exist, and produces an evidence-backed report of what\u2019s missing, stale, or undocumented \u2014 each gap ranked and paired with a recommended action.',
+        why: 'Open-data portals are only as useful as they are complete, but auditing a whole catalog by hand is slow and subjective. Showing the gaps with evidence lets a person act on them with confidence.',
+        repoUrl: 'https://github.com/zhaxinge/dot-data-gap-researcher', liveUrl: '',
+        stack: ['Python', 'TypeScript', 'Socrata API', 'Deterministic diff', 'LLM synthesis'],
+        stages: pipe([
+          { title: 'Catalog the portal', body: 'Pull every dataset published on data.transportation.gov, along with its metadata.', kicker: 'Read the portal', line: 'Catalog every published dataset.' },
+          { title: 'Gather the reference list', body: 'Collect what should exist from federal sources and partner registries \u2014 the yardstick for comparison.', kicker: 'Know what should exist', line: 'Reference federal + partner sources.' },
+          { title: 'Find the gaps', body: 'Compare the two lists deterministically to flag what\u2019s missing, stale, or undocumented \u2014 before any AI is involved.', kicker: 'Spot the gaps', line: 'Deterministic diff, evidence first.' },
+          { title: 'Draft the report', body: 'Write an evidence-backed report with a priority score and recommended action for every gap.', kicker: 'Hand off with receipts', line: 'A prioritized, action-ready report.' }
+        ]),
+        tech: [
+          { q: 'The approach', a: 'A trust layer for open data: run a deterministic catalog diff first, then let an LLM synthesize and explain \u2014 never the other way around. Every finding is backed by evidence a human can check.' },
+          { q: 'The pipeline', a: 'Four tools run in order: fetch the DOT portal catalog, search federal and external reference sources, diff them to find gaps, and export a markdown report plus a CSV.' },
+          { q: 'What it outputs', a: 'Each gap row carries a gap_class (true gap vs intentionally external), a priority_score, the evidence behind it, and a recommended_action \u2014 plus provider and category rollups.' },
+          { q: 'Stack & origin', a: 'A Python CLI with an optional React UI, working against the Socrata and data.gov APIs. The agent pattern is adapted from the NVIDIA \u201cBuild an Agent\u201d workshop.' }
+        ]
+      },
+      budget: {
+        id: 'budget', kind: 'pipeline',
+        name: 'Budget Lens', eyebrow: 'Agentic BI · Public spending',
+        tagline: 'A budget explorer that puts verified numbers first, and AI second.',
+        lead: 'Budget Lens turns a huge file of public Washington vendor payments into verified KPIs and stakeholder-specific views, then lets you ask plain-English follow-up questions that are answered only from those checked facts.',
+        why: 'Public-spending data is enormous and easy to misread. Computing the real totals first, and grounding the AI in them, means non-experts get answers they can actually trust.',
+        repoUrl: 'https://github.com/zhaxinge/wa-budget', liveUrl: 'https://wa-budget.vercel.app/',
+        stack: ['HTML / JS', 'Browser BI', 'Precomputed KPIs', 'Grounded AI', 'Vercel'],
+        stages: pipe([
+          { title: 'Load the raw payments', body: 'Bring in 934k+ public Washington vendor-payment records from a large workbook.', kicker: 'Load', line: '934k+ vendor payments.' },
+          { title: 'Verify the facts', body: 'Precompute full-dataset KPIs and metrics \u2014 totals that are checked, not guessed.', kicker: 'Verify', line: 'Real totals, precomputed.' },
+          { title: 'Pick a lens', body: 'See the numbers as an overview, a journalist, or a transportation investor.', kicker: 'Focus', line: 'Stakeholder-specific views.' },
+          { title: 'Start from guided questions', body: 'Begin with suggested questions instead of a blank chatbot.', kicker: 'Guide', line: 'Guided questions, not a blank box.' },
+          { title: 'Ask the AI \u2014 safely', body: 'Open-ended follow-ups, answered only from the verified facts. No invented numbers.', kicker: 'Grounded AI', line: 'Answers grounded in verified facts.' }
+        ]),
+        tech: [
+          { q: 'The principle', a: 'Data quality first, AI second. Budget Lens computes verified facts up front and only lets the AI answer from them \u2014 safer for non-technical users than a chatbot guessing totals from a small sample of rows.' },
+          { q: 'The data', a: 'Around 934,000 public-style Washington vendor-payment records (2021\u201323), precomputed into a compact summary of KPIs and transportation metrics (summary.json, ~80 KB) so it loads fast in the browser.' },
+          { q: 'Responsible AI', a: 'VERIFIED_FACTS are the source of truth; sample rows can\u2019t override them, and the model is told not to invent vendors, agencies, amounts, years, or explanations. The provider API key stays server-side.' },
+          { q: 'Run it', a: 'A browser app deployed on Vercel that loads summary.json automatically; the full 193 MB row file is generated locally. AI Q&A runs through a constrained server-side endpoint.' }
+        ]
+      },
+      parking: {
+        id: 'parking', kind: 'figure',
+        name: 'Super Finder', eyebrow: 'Machine learning · Spatial analysis',
+        tagline: 'A parking app that predicts where you\u2019ll actually find a spot.',
+        lead: 'Super Finder forecasts how full each street will be before you get there, so you can drive straight to a block where a space is likely \u2014 instead of circling. It works in San Francisco during workday daytime hours, ranking nearby curbs by predicted occupancy and price.',
+        why: 'Cruising for parking quietly burns time, fuel and patience, and adds to congestion and emissions. A live map of \u201copen now\u201d spots is already out of date by the time you arrive \u2014 a good prediction beats it.',
+        repoUrl: 'https://github.com/zhaxinge/Predictive-Parking-Occupancy', liveUrl: 'https://zhaxinge.github.io/Predictive-Parking-Occupancy/',
+        img: 'assets/img/app.png', aspect: '1152 / 576',
+        stack: ['R', 'OLS regression', 'Spatial (sf)', 'SF open data', 'Street-segment model'],
+        screens: [
+          { spot: { x: 12.5, y: 6, w: 20.5, h: 88 }, tourTitle: 'Tell it where you\u2019re headed', tourBody: 'You type a destination and how long you need to park. The map immediately shows how busy the blocks around you are right now \u2014 the wider the coral ring, the harder parking gets.', reelKicker: 'Find a spot in seconds', reelLine: 'Search by destination, see live demand.' },
+          { spot: { x: 39.5, y: 6, w: 20.5, h: 88 }, tourTitle: 'Compare real predictions \u2014 not just distance', tourBody: 'Every nearby spot is ranked by its predicted occupancy and price, so the top of the list is where you\u2019re genuinely most likely to park \u2014 like the block shown at 80% full with its chance of filling up in the next hour.', reelKicker: 'Predicted, not guessed', reelLine: 'An occupancy forecast for every street.' },
+          { spot: { x: 66, y: 6, w: 20.5, h: 88 }, tourTitle: 'Drive straight to an open curb', tourBody: 'Pick a spot and you get turn-by-turn navigation to it, with the curb\u2019s rates and time limits shown before you arrive \u2014 no surprises, no second loop around the block.', reelKicker: 'Straight to the curb', reelLine: 'Turn-by-turn, with rates up front.' }
+        ],
+        annos: [
+          { x: 22, y: 22, title: 'Destination search', body: 'Set where and when you want to park.' },
+          { x: 22, y: 60, title: 'Live demand radius', body: 'Coral rings show how full the surrounding blocks are, with a count of empty spots nearby.' },
+          { x: 49.5, y: 43, title: 'Predicted occupancy', body: 'Each spot carries a forecast \u2014 e.g. 80% full \u2014 plus its chance of filling within the hour.' },
+          { x: 76, y: 38, title: 'Route to the spot', body: 'Turn-by-turn navigation with an ETA to the chosen curb.' },
+          { x: 76, y: 73, title: 'Rates & time limits', body: 'Pricing by time of day and any limits, shown before you park.' }
+        ],
+        tech: [
+          { q: 'The problem', a: 'Cruising for on-street parking creates congestion, air pollution and wasted fuel, and costs individual drivers time and money. Most parking apps rely on real-time database lookups, which are limited by how completely a city\u2019s spaces are tracked.' },
+          { q: 'The data', a: 'The model was trained on three months of San Francisco street-parking data (April\u2013June 2021), at the level of individual street segments, for workday daytime hours (9am\u20136pm).' },
+          { q: 'The model', a: 'An OLS regression predicts a reasonable occupancy for each public street-parking segment. OLS was chosen for interpretability and generalizability \u2014 a safe estimate rather than an over-fit guess.' },
+          { q: 'Stack & credits', a: 'Built in R with the sf spatial stack on open San Francisco parking data, as the MUSA 508 final project by Xinge Zhang and Yiping Ying.' }
+        ]
+      },
+      charlotte: {
+        id: 'charlotte', kind: 'figure',
+        name: 'Charlotte House Prices', eyebrow: 'Hedonic model · Spatial analysis',
+        tagline: 'A model that predicts what a Charlotte home should sell for.',
+        lead: 'Using thousands of home sales across Mecklenburg County, this model estimates a fair market price from a property\u2019s features and its neighborhood. The map shows where its predictions land close \u2014 and where they miss.',
+        why: 'Charlotte is one of the fastest-growing metros in the U.S.; the county\u2019s median home price jumped about 15% in a single year. A grounded price estimate helps buyers and sellers read a fast-moving market.',
+        repoUrl: 'https://github.com/zhaxinge/Charlotte-Houseprice-Prediction', liveUrl: 'https://zhaxinge.github.io/Charlotte-Houseprice-Prediction/',
+        img: 'assets/img/houseprice.jpg', aspect: '1584 / 1255',
+        stack: ['R', 'OLS / hedonic model', 'US Census', 'k-fold + spatial CV', 'MAPE by neighborhood'],
+        screens: [
+          { spot: { x: 16, y: 4, w: 62, h: 92 }, tourTitle: 'Every dot is a home sale', tourBody: 'Each point is a sold home across Mecklenburg County, colored by how far the model\u2019s prediction was from the real price. Together they map the whole county at once.', reelKicker: 'County-wide', reelLine: 'Thousands of sales, one model.' },
+          { spot: { x: 46, y: 40, w: 30, h: 32 }, tourTitle: 'Where it gets it right', tourBody: 'Blue areas are homes the model priced within a tight range \u2014 the bulk of typical, well-documented neighborhoods where standard features explain the price.', reelKicker: 'Mostly on target', reelLine: 'Blue = close to the real price.' },
+          { spot: { x: 34, y: 58, w: 30, h: 32 }, tourTitle: 'Where it struggles', tourBody: 'Orange clusters are larger misses \u2014 often unusual or higher-end homes whose price isn\u2019t fully captured by standard features. Showing them honestly is part of the analysis.', reelKicker: 'Honest about limits', reelLine: 'Orange = the hard-to-price homes.' }
+        ],
+        annos: [
+          { x: 62, y: 24, title: 'Well-predicted north', body: 'Predictions hold up across established suburban neighborhoods.' },
+          { x: 50, y: 74, title: 'Under-predicted pockets', body: 'Orange homes sold for more than their features alone suggest.' },
+          { x: 87, y: 42, title: 'Residual scale', body: 'Color runs from large under-prediction to over-prediction.' },
+          { x: 26, y: 56, title: 'Sparse rural edges', body: 'Fewer sales make the rural west harder to model accurately.' }
+        ],
+        tech: [
+          { q: 'The goal', a: 'Mecklenburg County, home to Charlotte, is growing fast \u2014 its median home price rose roughly 15% year-over-year to about $420K. The project builds a model accurate enough to be useful to buyers and sellers.' },
+          { q: 'The data', a: 'Home sales joined with U.S. Census measures and neighborhood amenities, plus local market signals from sources like Zillow and Redfin, at the census-tract level.' },
+          { q: 'The model', a: 'An OLS (hedonic) regression on selected features, validated with random k-fold and spatial cross-validation. Performance is reported as Mean Absolute Percentage Error by neighborhood.' },
+          { q: 'Credits', a: 'MUSA 508 midterm project by Xinge Zhang. Full notebooks, maps and cross-validation results are in the repo and the published report.' }
+        ]
+      },
+      scooter: {
+        id: 'scooter', kind: 'figure',
+        name: 'Scooter Equity', eyebrow: 'Network analysis · Mobility',
+        tagline: 'Where shared scooters earn their keep \u2014 Austin vs. Chicago.',
+        lead: 'This study maps where e-scooter trips actually cluster in two cities, then models which neighborhood traits drive that demand \u2014 so planners and operators can spot the blocks worth investing in.',
+        why: 'Cities are deciding where to allow and fund shared scooters. Knowing which areas have real potential \u2014 and how two cities differ \u2014 turns a guessing game into a planning decision.',
+        repoUrl: 'https://github.com/zhaxinge/xy-scooter', liveUrl: 'https://zhaxinge.github.io/xy-scooter/',
+        img: 'assets/img/scooter.jpg', aspect: '1728 / 1344',
+        stack: ['Python', 'GeoPandas', 'OD network analysis', 'Census tracts', 'Austin + Chicago 2019'],
+        screens: [
+          { spot: { x: 3, y: 12, w: 42, h: 64 }, tourTitle: 'Chicago\u2019s trip web', tourBody: 'Each line is travel between neighborhoods. Chicago\u2019s scooter trips bunch tightly on the dense north side, where short hops between adjacent areas dominate.', reelKicker: 'Chicago', reelLine: 'Trips cluster on the dense north side.' },
+          { spot: { x: 54, y: 22, w: 43, h: 68 }, tourTitle: 'Austin\u2019s trip web', tourBody: 'Austin\u2019s demand centers on downtown and the university, with longer cross-town hops reaching out from the core \u2014 a different shape of city, a different scooter pattern.', reelKicker: 'Austin', reelLine: 'Demand centers on downtown and campus.' },
+          { spot: { x: 3, y: 12, w: 94, h: 78 }, tourTitle: 'Two cities, one method', tourBody: 'The same census-tract model runs on both cities, which makes their very different patterns directly comparable rather than anecdotal.', reelKicker: 'Side by side', reelLine: 'Same model, two mobility cultures.' }
+        ],
+        annos: [
+          { x: 20, y: 32, title: 'Chicago core', body: 'Tightly connected north-side tracts carry most trips.' },
+          { x: 74, y: 60, title: 'Austin core', body: 'Downtown and the campus area dominate demand.' },
+          { x: 34, y: 58, title: 'Long edges', body: 'Lines stretching out are longer cross-town trips.' },
+          { x: 82, y: 40, title: 'Color = volume', body: 'Brighter, heavier lines carry more trips.' }
+        ],
+        tech: [
+          { q: 'The question', a: 'Do people take scooters because of who lives in an area, the mix of available transport, or the time of day? The project compares scooter usage in Austin and Chicago to see what drives demand.' },
+          { q: 'The data', a: 'E-scooter trip datasets for Austin and Chicago in 2019, analyzed at the census-tract level alongside community attributes and travel-mode and peak-hour patterns.' },
+          { q: 'The method', a: 'Exploratory spatial analysis plus an origin\u2013destination network view of trips, summarized by census tract, to rank areas by scooter potential and surface differences between the cities.' },
+          { q: 'Credits', a: 'MUSA 550 final project by Xinge Zhang and Yiping Ying. The full write-up is in the published report linked from the repo.' }
+        ]
+      },
+      kenya: {
+        id: 'kenya', kind: 'figure',
+        name: 'Kenya Land Value', eyebrow: 'Satellite ML · MOSAIKS',
+        tagline: 'Estimating land value from space \u2014 using satellite imagery alone.',
+        lead: 'Where ground data is scarce, this project predicts land and property value straight from satellite images. It turns raw imagery into compact numerical features \u2014 the MOSAIKS approach \u2014 and learns the link to value.',
+        why: 'Across much of the world, reliable land-value data simply doesn\u2019t exist. A method that reads value from freely available satellite imagery could fill that gap for planning, lending and policy.',
+        repoUrl: 'https://github.com/zhaxinge/Kenya-Land-Value', liveUrl: '',
+        img: 'assets/img/mapsample.png', aspect: '457 / 337',
+        stack: ['Python', 'MOSAIKS features', 'Ridge regression', 'Sentinel-2 / Landsat', 'VIIRS nightlights'],
+        screens: [
+          { spot: { x: 5, y: 25, w: 27, h: 50 }, tourTitle: 'Start with a satellite tile', tourBody: 'The landscape is split into 1km tiles. Each one starts as nothing more than an ordinary satellite image \u2014 no labels, no survey data attached.', reelKicker: 'From orbit', reelLine: 'A 1km tile of the landscape.' },
+          { spot: { x: 31, y: 25, w: 34, h: 50 }, tourTitle: 'Detect what\u2019s there', tourBody: 'Roads, buildings and field patterns light up as the image is processed into features \u2014 automatically, with no manual labeling of what each pixel is.', reelKicker: 'What\u2019s on the ground', reelLine: 'Roads and buildings, detected automatically.' },
+          { spot: { x: 66, y: 25, w: 28, h: 50 }, tourTitle: 'Turn it into numbers', tourBody: 'Each tile becomes a compact set of numbers \u2014 random convolutional features \u2014 that a simple model can learn value from, even far from any survey.', reelKicker: 'Image to number', reelLine: 'Compressed into learnable features.' }
+        ],
+        annos: [
+          { x: 18, y: 50, title: 'Raw imagery', body: 'An unlabeled 1km satellite frame of the area.' },
+          { x: 47, y: 50, title: 'Detected structure', body: 'Roads and buildings emerge as the image is processed.' },
+          { x: 80, y: 45, title: 'MOSAIKS features', body: '256 random convolutional features summarize each tile.' },
+          { x: 35, y: 86, title: 'Sample frames', body: '1km frames shown here to illustrate the method.' }
+        ],
+        tech: [
+          { q: 'The idea', a: 'In many regions there is little reliable data on land or property value. This project tests whether value can be predicted directly from satellite imagery using MOSAIKS, which turns any image into general-purpose numerical features.' },
+          { q: 'The data', a: 'Sentinel-2 and Landsat 7/8 imagery from 2012\u20132018 combined with VIIRS nightlight data, processed on Microsoft\u2019s Planetary Computer so the imagery never has to be downloaded locally.' },
+          { q: 'The method', a: 'Each satellite tile is converted into 256 random convolutional features, then a ridge regression links those features to land value. Several imagery and nightlight combinations were tested.' },
+          { q: 'Credits', a: 'Research project by Xinge Zhang, adapting the published MOSAIKS pipeline. Code, configs and intermediate outputs are documented in the repo.' }
+        ]
+      }
+    };
+
+    this._t = null;
+  }
+
+  componentDidMount() { this.tick(); }
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  cur() { return this.PROJECTS[this.state.pid]; }
+  lenOf(p) { return p.kind === 'pipeline' ? p.stages.length : p.screens.length; }
+
+  isAuto() {
+    if (this.state.view !== 'project') return false;
+    const d = this.state.dir;
+    if (d === 'annotated') return false;
+    if (d === 'reel') return (this.props.autoplay ?? true);
+    return (this.props.autoplay ?? true) && this.state.playing;
+  }
+  tick() {
+    clearTimeout(this._t);
+    if (!this.isAuto()) return;
+    const speed = (this.props.autoplaySpeed ?? 3.6) * 1000;
+    const n = this.lenOf(this.cur());
+    this._t = setTimeout(() => { this.setState(s => ({ step: (s.step + 1) % n })); this.tick(); }, speed);
+  }
+
+  openProject(id) {
+    clearTimeout(this._t);
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    this.setState({ view: 'project', pid: id, dir: 'tour', step: 0, openTech: 0, playing: true }, () => this.tick());
+  }
+  goHome() { clearTimeout(this._t); this.setState({ view: 'home' }); }
+  goAbout() { clearTimeout(this._t); this.setState({ view: 'about' }); }
+  goAwards() {
+    clearTimeout(this._t);
+    this.setState({ view: 'home' }, () => {
+      setTimeout(() => {
+        if (typeof document !== 'undefined' && typeof window !== 'undefined') {
+          const el = document.getElementById('awards');
+          if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 16);
+        }
+      }, 60);
+    });
+  }
+  setDir(d) { clearTimeout(this._t); this.setState({ dir: d, step: 0, playing: true }, () => this.tick()); }
+  goStep(i) { clearTimeout(this._t); this.setState({ step: i, playing: false }); }
+  togglePlay() { this.setState(s => ({ playing: !s.playing }), () => this.tick()); }
+  toggleTech(i) { this.setState(s => ({ openTech: s.openTech === i ? -1 : i })); }
+  setQuery(e) { this.setState({ query: e.target.value }); }
+  toggleSidebar() { this.setState(s => ({ sidebarOpen: !s.sidebarOpen })); }
+
+  renderVals() {
+    const { view, pid, dir, step, playing, openTech, query } = this.state;
+    const accent = this.props.accent ?? '#f56a6a';
+    const PR = this.PROFILE;
+
+    // --- sidebar nav ---
+    const navBase = "display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--font-heading),serif;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;font-size:0.82em;padding:0.4em 0;transition:color 0.2s ease-in-out;";
+    const navLink = (active) => navBase + (active ? "color:var(--accent,#f56a6a);" : "color:var(--fg-bold,#3d4449);");
+    const subBase = "display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--font-body),sans-serif;font-size:0.86em;padding:0.28em 0;transition:color 0.2s ease-in-out;";
+    const subLink = (active) => subBase + (active ? "color:var(--accent,#f56a6a);font-weight:600;" : "color:var(--fg,#7f888f);");
+
+    const colorByPid = {};
+    this.GROUPS.forEach(g => g.items.forEach(id => { colorByPid[id] = g.color; }));
+
+    const menuGroups = this.GROUPS.map(g => ({
+      name: g.name,
+      labelStyle: "font-family:var(--font-heading),serif;font-weight:700;font-size:0.66em;letter-spacing:0.16em;text-transform:uppercase;color:" + g.color + ";margin-bottom:0.4em;",
+      items: g.items.map(id => ({
+        title: this.PROJECTS[id].name,
+        onClick: () => this.openProject(id),
+        style: subBase + (view === 'project' && pid === id ? ("color:" + g.color + ";font-weight:600;") : "color:var(--fg,#7f888f);")
+      }))
+    }));
+
+    const awardsLabelStyle = "font-family:var(--font-heading),serif;font-weight:700;font-size:0.66em;letter-spacing:0.16em;text-transform:uppercase;color:#c98a2e;margin-bottom:0.4em;";
+    const awardsNav = [
+      { title: 'Precision Forecast', onClick: () => this.goAwards(), style: subBase + "color:var(--fg,#7f888f);" },
+      { title: 'SMACH — Land art', onClick: () => this.goAwards(), style: subBase + "color:var(--fg,#7f888f);" }
+    ];
+
+    // --- home cards ---
+    const q = (query || '').trim().toLowerCase();
+    const matches = (p) => !q || (p.name + ' ' + p.tagline + ' ' + p.eyebrow + ' ' + p.stack.join(' ')).toLowerCase().includes(q);
+    const toCard = (p) => {
+      const isPipe = p.kind === 'pipeline';
+      const thumbBase = "position:relative;aspect-ratio:16/10;border-radius:var(--radius,0.375em);overflow:hidden;background-color:var(--bg-alt,#f5f6f7);";
+      const thumbStyle = isPipe ? thumbBase
+        : thumbBase + "background-image:url('" + p.img + "');background-size:contain;background-position:center;background-repeat:no-repeat;";
+      return {
+        title: p.name, tagline: p.tagline, eyebrow: p.eyebrow,
+        onClick: () => this.openProject(p.id),
+        isPipeline: isPipe,
+        thumbStyle,
+        miniNodes: isPipe ? p.stages.map((_, i) => ({ n: i + 1 })) : []
+      };
+    };
+    const homeSections = this.GROUPS.map(g => ({
+      name: g.name, color: g.color,
+      cards: g.items.map(id => this.PROJECTS[id]).filter(matches).map(toCard)
+    })).filter(s => s.cards.length);
+
+    const sbOpen = this.state.sidebarOpen;
+    const asideStyle = "flex:none;min-width:0;align-self:stretch;position:sticky;top:0;height:100vh;overflow-y:auto;overflow-x:hidden;background:var(--bg-alt,#f5f6f7);transition:width 0.3s ease,padding 0.3s ease;" + (sbOpen ? "width:23em;padding:2.4em 2.2em 2em;border-right:1px solid var(--border,rgba(210,215,217,0.75));" : "width:0;padding:0;border-right:none;");
+    const toggleStyle = "position:fixed;top:0.9em;z-index:40;width:2.4em;height:2.4em;border-radius:50%;border:1px solid var(--border,rgba(210,215,217,0.75));background:var(--bg,#ffffff);color:var(--fg-bold,#3d4449);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:left 0.3s ease;box-shadow:0 1px 3px rgba(0,0,0,0.07);" + (sbOpen ? "left:20.2em;" : "left:0.9em;");
+    const base = {
+      accent,
+      asideStyle, toggleStyle, sidebarOpen: sbOpen,
+      toggleIcon: sbOpen ? 'fa-angle-left' : 'fa-bars',
+      toggleSidebar: () => this.toggleSidebar(),
+      profileRole: PR.role, email: PR.email, githubUrl: PR.github,
+      bannerBlurb: PR.blurb, aboutParas: PR.about,
+      query,
+      setQuery: (e) => this.setQuery(e),
+      homeOnClick: () => this.goHome(),
+      aboutOnClick: () => this.goAbout(),
+      learnMore: () => this.goAbout(),
+      homeNavStyle: navLink(view === 'home'),
+      aboutNavStyle: navLink(view === 'about'),
+      menuGroups,
+      awardsLabelStyle, awardsNav,
+      homeSections,
+      noResults: !!q && homeSections.length === 0,
+      projectColor: colorByPid[pid] || accent,
+      worksCaption: 'A guided demo of each project \u2014 no setup, no code to run.',
+      isHome: view === 'home', isAbout: view === 'about', isProject: view === 'project'
+    };
+
+    if (view !== 'project') return base;
+
+    // --- project demo ---
+    const P = this.cur();
+    const kind = P.kind;
+    const total = this.lenOf(P);
+
+    const tabBase = "padding:0.62em 1.25em;font-family:var(--font-heading),serif;font-weight:700;font-size:0.72em;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;transition:background 0.2s ease-in-out,color 0.2s ease-in-out;";
+    const tab = (on) => tabBase + (on ? "background:var(--accent,#f56a6a);color:#ffffff;" : "background:transparent;color:var(--fg-light,#9fa3a6);");
+
+    const activeDot = "width:26px;height:6px;border-radius:3px;background:var(--accent,#f56a6a);cursor:pointer;border:none;padding:0;transition:all 0.3s ease;";
+    const idleDot = "width:6px;height:6px;border-radius:3px;background:#d2d7d9;cursor:pointer;border:none;padding:0;transition:all 0.3s ease;";
+    const dots = Array.from({ length: total }, (_, i) => ({ onClick: () => this.goStep(i), style: i === step ? activeDot : idleDot }));
+
+    let active, annos, frameStyle = '', spotStyle = '', reelSpotStyle = '', nodeList = [];
+
+    if (kind === 'figure') {
+      const a = P.screens[step] || P.screens[0];
+      active = { title: a.tourTitle, body: a.tourBody, kicker: a.reelKicker, line: a.reelLine };
+      annos = P.annos.map((x, i) => ({
+        n: i + 1, title: x.title, body: x.body,
+        pinStyle: "position:absolute;left:" + x.x + "%;top:" + x.y + "%;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;background:var(--accent,#f56a6a);color:#fff;font-family:var(--font-heading),serif;font-weight:700;font-size:0.78em;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(255,255,255,0.85);z-index:5;"
+      }));
+      frameStyle = "position:relative;width:100%;aspect-ratio:" + P.aspect + ";background-color:#ffffff;background-image:url('" + P.img + "');background-size:contain;background-repeat:no-repeat;background-position:center;border:1px solid var(--border,rgba(210,215,217,0.75));border-radius:0.5em;overflow:hidden;";
+      const spot = (veil) => "position:absolute;left:" + a.spot.x + "%;top:" + a.spot.y + "%;width:" + a.spot.w + "%;height:" + a.spot.h + "%;border:2px solid var(--accent,#f56a6a);border-radius:10px;box-shadow:0 0 0 9999px rgba(255,255,255," + veil + ");transition:all 0.55s ease;pointer-events:none;z-index:4;";
+      spotStyle = spot(0.74); reelSpotStyle = spot(0.86);
+    } else {
+      const st = P.stages;
+      const a = st[step] || st[0];
+      active = { title: a.title, body: a.body, kicker: a.kicker, line: a.line };
+      annos = st.map((s, i) => ({ n: i + 1, title: s.title, body: s.body }));
+      const nodeActive = "flex:1 1 auto;min-width:0;border:2px solid var(--accent,#f56a6a);border-radius:0.375em;padding:0.85em 0.8em;background:var(--accent-wash,rgba(245,106,106,0.05));opacity:1;transition:all 0.35s ease;";
+      const nodeDim = "flex:1 1 auto;min-width:0;border:1px solid var(--border,rgba(210,215,217,0.75));border-radius:0.375em;padding:0.85em 0.8em;background:#fff;opacity:0.4;transition:all 0.35s ease;";
+      const nodeAll = "flex:1 1 auto;min-width:0;border:1px solid var(--border,rgba(210,215,217,0.75));border-radius:0.375em;padding:0.85em 0.8em;background:#fff;opacity:1;transition:all 0.35s ease;";
+      nodeList = st.map((s, i) => ({
+        n: i + 1, title: s.title,
+        arrowStyle: i === 0 ? "display:none;" : "display:block;color:var(--fg-light,#9fa3a6);font-size:0.7em;flex:none;",
+        style: dir === 'annotated' ? nodeAll : (i === step ? nodeActive : nodeDim)
+      }));
+    }
+
+    const hasLive = !!P.liveUrl && P.liveUrl !== P.repoUrl;
+    const modeTitle = dir === 'tour' ? 'Guided tour' : dir === 'annotated' ? 'Annotated steps' : 'Highlight reel';
+    const modeBlurb = dir === 'tour'
+      ? 'A narrated walkthrough that advances on its own \u2014 one plain-language step at a time.'
+      : dir === 'annotated'
+      ? (kind === 'pipeline' ? 'The whole pipeline at once, with every stage explained in plain language.' : 'The whole figure at once, with numbered callouts explaining what each part shows.')
+      : 'A short, looping highlight of the moments that matter \u2014 no clicking required.';
+
+    return Object.assign(base, {
+      back: () => this.goHome(),
+      eyebrow: P.eyebrow, name: P.name, tagline: P.tagline, lead: P.lead, why: P.why,
+      repoUrl: P.repoUrl, liveUrl: P.liveUrl, stack: P.stack,
+      hasLive, repoVariant: hasLive ? 'default' : 'primary',
+      isFigure: kind === 'figure', isPipeline: kind === 'pipeline',
+      isTour: dir === 'tour', isAnnotated: dir === 'annotated', isReel: dir === 'reel',
+      showTour: () => this.setDir('tour'), showAnnotated: () => this.setDir('annotated'), showReel: () => this.setDir('reel'),
+      tabTour: tab(dir === 'tour'), tabAnn: tab(dir === 'annotated'), tabReel: tab(dir === 'reel'),
+      modeTitle, modeBlurb,
+      frameStyle, spotStyle, reelSpotStyle, nodeList,
+      stepHuman: step + 1, total,
+      progressStyle: "height:100%;width:" + Math.round(((step + 1) / total) * 100) + "%;background:var(--accent,#f56a6a);border-radius:3px;transition:width 0.55s ease;",
+      playing, playIcon: playing ? 'fa-pause' : 'fa-play', togglePlay: () => this.togglePlay(),
+      dots,
+      activeTitle: active.title, activeBody: active.body, activeKicker: active.kicker, activeLine: active.line,
+      annos,
+      tech: P.tech.map((t, i) => ({ q: t.q, a: t.a, onClick: () => this.toggleTech(i), icon: openTech === i ? 'fa-minus' : 'fa-plus', bodyStyle: openTech === i ? "display:block;" : "display:none;" }))
+    });
+  }
+}
+</script>
+</body>
 </html>

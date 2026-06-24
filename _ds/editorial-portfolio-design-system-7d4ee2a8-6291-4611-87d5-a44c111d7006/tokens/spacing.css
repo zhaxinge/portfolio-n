@@ -1,0 +1,43 @@
+/* ===========================================================================
+   Spacing, radii, sizing & motion — Editorial Portfolio Design System
+   Source: Editorial by HTML5 UP (_vars.scss $size, $duration)
+   ===========================================================================*/
+
+:root {
+  /* --- Radius ------------------------------------------------------------ */
+  --radius:    0.375em;  /* fields, buttons, cards, chips (~6px)            */
+  --radius-pill: 100px;
+  --radius-round: 100%;
+
+  /* --- Brand spacing primitives (em-relative, scale with type) ----------- */
+  --element-height: 2.75em;  /* inputs / selects                          */
+  --element-margin: 2em;     /* vertical rhythm between blocks             */
+  --gutter:         3em;     /* grid gutter                               */
+  --sidebar-width:     26em;
+  --sidebar-width-alt: 24em;
+
+  /* --- Practical px spacing scale (general layout) ----------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* --- Borders ----------------------------------------------------------- */
+  --border-width:    1px;
+  --border-width-2:  2px;   /* sidebar section dividers, button stroke     */
+  --button-stroke:   2px;
+
+  /* --- Shadows (used sparingly — only the off-canvas sidebar) ------------ */
+  --shadow-sidebar: 0 0 5em 0 rgba(0, 0, 0, 0.175);
+  --shadow-float:   0 0.5em 1.5em 0 rgba(0, 0, 0, 0.08);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --duration-transition: 0.2s; /* @kind other */
+  --duration-nav:        0.5s; /* @kind other */
+  --ease: ease-in-out; /* @kind other */
+}
